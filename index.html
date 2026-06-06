@@ -75,7 +75,11 @@ nav.scrolled{background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1
 .toggle-icon{position:absolute;font-size:10px;line-height:1;}
 .t-sun{left:5px;opacity:var(--sun-op);} .t-moon{right:5px;opacity:var(--moon-op);}
 
-/* HAMBURGER */
+/* LANG TOGGLE */
+.lang-btn{background:none;border:1.5px solid var(--border);border-radius:100px;padding:5px 12px;cursor:pointer;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--fg);display:flex;align-items:center;gap:6px;}
+.lang-btn:hover{border-color:var(--fg-muted);}
+.lang-btn .lang-active{color:var(--accent);}
+.lang-btn .lang-sep{color:var(--fg-muted);font-weight:400;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;z-index:210;padding:4px;}
 .hamburger span{display:block;width:22px;height:2px;background:var(--fg);border-radius:2px;}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -294,10 +298,16 @@ footer span{font-size:12px;color:var(--fg-muted);}
 <nav id="nav">
   <a class="nav-logo" href="#">LS<span>.</span></a>
   <div class="nav-links">
-    <a href="#about">About</a><a href="#experience">Experience</a>
-    <a href="#results">Results</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    <a href="#about" data-id="About" data-en="About">About</a>
+    <a href="#experience" data-id="Pengalaman" data-en="Experience">Pengalaman</a>
+    <a href="#results" data-id="Hasil" data-en="Results">Hasil</a>
+    <a href="#skills" data-id="Keahlian" data-en="Skills">Keahlian</a>
+    <a href="#contact" data-id="Kontak" data-en="Contact">Kontak</a>
   </div>
   <div class="nav-right">
+    <button class="lang-btn" id="langBtn" aria-label="Toggle language">
+      <span class="lang-active" id="langActive">ID</span><span class="lang-sep">/</span><span id="langOther">EN</span>
+    </button>
     <button class="theme-toggle" id="tBtn" aria-label="Toggle theme">
       <span class="toggle-track"><span class="toggle-knob"></span>
         <span class="toggle-icon t-sun">☀️</span><span class="toggle-icon t-moon">🌙</span>
@@ -308,33 +318,40 @@ footer span{font-size:12px;color:var(--fg-muted);}
 </nav>
 
 <div class="mobile-menu" id="mMenu">
-  <a href="#about" class="ml">About</a><a href="#experience" class="ml">Experience</a>
-  <a href="#results" class="ml">Results</a><a href="#skills" class="ml">Skills</a>
-  <a href="#contact" class="ml">Contact</a>
-  <button class="theme-toggle" id="tBtn2" aria-label="Toggle theme" style="margin-top:8px;">
-    <span class="toggle-track"><span class="toggle-knob"></span>
-      <span class="toggle-icon t-sun">☀️</span><span class="toggle-icon t-moon">🌙</span>
-    </span>
-  </button>
+  <a href="#about" class="ml" data-id="About" data-en="About">About</a>
+  <a href="#experience" class="ml" data-id="Pengalaman" data-en="Experience">Pengalaman</a>
+  <a href="#results" class="ml" data-id="Hasil" data-en="Results">Hasil</a>
+  <a href="#skills" class="ml" data-id="Keahlian" data-en="Skills">Keahlian</a>
+  <a href="#contact" class="ml" data-id="Kontak" data-en="Contact">Kontak</a>
+  <div style="display:flex;gap:12px;margin-top:8px;">
+    <button class="lang-btn" id="langBtn2" aria-label="Toggle language">
+      <span class="lang-active" id="langActive2">ID</span><span class="lang-sep">/</span><span id="langOther2">EN</span>
+    </button>
+    <button class="theme-toggle" id="tBtn2" aria-label="Toggle theme">
+      <span class="toggle-track"><span class="toggle-knob"></span>
+        <span class="toggle-icon t-sun">☀️</span><span class="toggle-icon t-moon">🌙</span>
+      </span>
+    </button>
+  </div>
 </div>
 
 <section class="hero" id="home">
   <div class="hero-bg-num">2+</div>
-  <div class="hero-tag">Available for new opportunities · Jakarta, Indonesia</div>
+  <div class="hero-tag" data-id="Tersedia untuk peluang baru · Jakarta, Indonesia" data-en="Available for new opportunities · Jakarta, Indonesia">Tersedia untuk peluang baru · Jakarta, Indonesia</div>
   <h1 class="hero-title">
     <span class="line"><span class="line-inner">Leonardo</span></span>
     <span class="line"><span class="line-inner" style="font-style:italic;font-weight:400;color:var(--fg-muted)">Steven</span></span>
-    <span class="line"><span class="line-inner" style="color:var(--accent)">Digital Marketer</span></span>
+    <span class="line"><span class="line-inner" style="color:var(--accent)" data-id="Digital Marketer" data-en="Digital Marketer">Digital Marketer</span></span>
   </h1>
   <div class="hero-bottom">
-    <p class="hero-desc">Digital Marketing Executive & Account Executive dengan rekam jejak nyata — ROAS 15.15x, 302K video plays, dan 6 klien aktif dikelola secara bersamaan.</p>
+    <p class="hero-desc" data-id="Digital Marketing Executive & Account Executive dengan rekam jejak nyata — ROAS 15.15x, 302K video plays, dan 6 klien aktif dikelola secara bersamaan." data-en="Digital Marketing Executive & Account Executive with a proven track record — ROAS 15.15x, 302K video plays, and 6 active clients managed simultaneously.">Digital Marketing Executive & Account Executive dengan rekam jejak nyata — ROAS 15.15x, 302K video plays, dan 6 klien aktif dikelola secara bersamaan.</p>
     <div class="hero-stats">
-      <div><div class="stat-num" id="cR">0<span>x</span></div><div class="stat-lbl">Peak ROAS</div></div>
-      <div><div class="stat-num" id="cP">0<span>K</span></div><div class="stat-lbl">Video Plays</div></div>
-      <div><div class="stat-num" id="cC">0</div><div class="stat-lbl">Active Clients</div></div>
+      <div><div class="stat-num" id="cR">0<span>x</span></div><div class="stat-lbl" data-id="ROAS Tertinggi" data-en="Peak ROAS">ROAS Tertinggi</div></div>
+      <div><div class="stat-num" id="cP">0<span>K</span></div><div class="stat-lbl" data-id="Video Ditonton" data-en="Video Plays">Video Ditonton</div></div>
+      <div><div class="stat-num" id="cC">0</div><div class="stat-lbl" data-id="Klien Aktif" data-en="Active Clients">Klien Aktif</div></div>
     </div>
   </div>
-  <div class="scroll-ind"><div class="scroll-bar"></div><span>Scroll</span></div>
+  <div class="scroll-ind"><div class="scroll-bar"></div><span data-id="Gulir" data-en="Scroll">Gulir</span></div>
 </section>
 
 <div class="marquee-wrap">
@@ -359,17 +376,17 @@ footer span{font-size:12px;color:var(--fg-muted);}
 </div>
 
 <section id="about">
-  <div class="sec-label reveal">About</div>
+  <div class="sec-label reveal" data-id="Tentang" data-en="About">Tentang</div>
   <div class="about-grid">
     <div>
-      <h2 class="sec-title reveal">Data-driven marketer dengan DNA seorang developer.</h2>
-      <p class="about-text reveal d1">Saya adalah <strong>Leonardo Steven</strong> — lulusan Informatika dengan GPA <strong>3.53/4.00</strong> yang memilih dunia digital marketing karena satu alasan: <strong>angka tidak berbohong</strong>.</p><br>
-      <p class="about-text reveal d2">Selama 2+ tahun di P.W.D Lab, saya mengelola <strong>6 klien aktif</strong> secara bersamaan — dari F&B, fashion, hingga retail — sambil menulis kode untuk website mereka. Kombinasi yang jarang ada di pasar.</p>
+      <h2 class="sec-title reveal" data-id="Marketer berbasis data dengan DNA seorang developer." data-en="Data-driven marketer with a developer's DNA.">Marketer berbasis data dengan DNA seorang developer.</h2>
+      <p class="about-text reveal d1" data-id="Saya adalah <strong>Leonardo Steven</strong> — lulusan Informatika dengan GPA <strong>3.53/4.00</strong> yang memilih dunia digital marketing karena satu alasan: <strong>angka tidak berbohong</strong>." data-en="I am <strong>Leonardo Steven</strong> — an Informatics graduate with a GPA of <strong>3.53/4.00</strong> who chose digital marketing for one reason: <strong>numbers don't lie</strong>.">Saya adalah <strong>Leonardo Steven</strong> — lulusan Informatika dengan GPA <strong>3.53/4.00</strong> yang memilih dunia digital marketing karena satu alasan: <strong>angka tidak berbohong</strong>.</p><br>
+      <p class="about-text reveal d2" data-id="Selama 2+ tahun di P.W.D Lab, saya mengelola <strong>6 klien aktif</strong> secara bersamaan — dari F&B, fashion, hingga retail — sambil menulis kode untuk website mereka. Kombinasi yang jarang ada di pasar." data-en="Over 2+ years at P.W.D Lab, I managed <strong>6 active clients</strong> simultaneously — from F&B, fashion, to retail — while also coding their websites. A rare combination in the market.">Selama 2+ tahun di P.W.D Lab, saya mengelola <strong>6 klien aktif</strong> secara bersamaan — dari F&B, fashion, hingga retail — sambil menulis kode untuk website mereka. Kombinasi yang jarang ada di pasar.</p>
     </div>
     <div class="about-hl">
-      <div class="h-card reveal d1"><div class="h-num">15.15x</div><div class="h-lbl">Overall ROAS terbaik — Shopee + CPAS integrated (Jan–Feb 2026)</div></div>
-      <div class="h-card reveal d2"><div class="h-num">302K</div><div class="h-lbl">Video plays dari 1 campaign Instagram Ads — UKI Matcha</div></div>
-      <div class="h-card reveal d3"><div class="h-num">IDR 22.5M</div><div class="h-lbl">Monthly sales Majolique di Shopee — Maret 2026</div></div>
+      <div class="h-card reveal d1"><div class="h-num">15.15x</div><div class="h-lbl" data-id="Overall ROAS terbaik — Shopee + CPAS integrated (Jan–Feb 2026)" data-en="Best overall ROAS — Shopee + CPAS integrated (Jan–Feb 2026)">Overall ROAS terbaik — Shopee + CPAS integrated (Jan–Feb 2026)</div></div>
+      <div class="h-card reveal d2"><div class="h-num">302K</div><div class="h-lbl" data-id="Video plays dari 1 campaign Instagram Ads — UKI Matcha" data-en="Video plays from 1 Instagram Ads campaign — UKI Matcha">Video plays dari 1 campaign Instagram Ads — UKI Matcha</div></div>
+      <div class="h-card reveal d3"><div class="h-num">IDR 22.5M</div><div class="h-lbl" data-id="Penjualan bulanan Majolique di Shopee — Maret 2026" data-en="Monthly sales of Majolique on Shopee — March 2026">Penjualan bulanan Majolique di Shopee — Maret 2026</div></div>
     </div>
   </div>
 </section>
@@ -377,88 +394,95 @@ footer span{font-size:12px;color:var(--fg-muted);}
 <div class="divider"></div>
 
 <section id="experience">
-  <div class="sec-label reveal">Experience</div>
-  <h2 class="sec-title reveal">Perjalanan karier<br>yang terukur.</h2>
+  <div class="sec-label reveal" data-id="Pengalaman" data-en="Experience">Pengalaman</div>
+  <h2 class="sec-title reveal" data-id="Perjalanan karier<br>yang terukur." data-en="A career journey<br>measured in results.">Perjalanan karier<br>yang terukur.</h2>
   <div class="exp-list">
     <div class="exp-item reveal">
       <div class="exp-date">May 2024 — Present</div>
       <div><div class="exp-co">P.W.D Lab</div><div class="exp-role">Account Executive &<br>Digital Marketing Executive</div>
-      <p class="exp-desc">Mengelola 6 klien aktif secara simultan — briefing tim kreatif, optimasi iklan Meta & Shopee, menyusun laporan performa bulanan, dan menangani administrasi keuangan klien. Total ad budget yang dikelola mencapai puluhan juta IDR per bulan.</p>
+      <p class="exp-desc" data-id="Mengelola 6 klien aktif secara simultan — briefing tim kreatif, optimasi iklan Meta & Shopee, menyusun laporan performa bulanan, dan menangani administrasi keuangan klien. Total ad budget yang dikelola mencapai puluhan juta IDR per bulan." data-en="Managed 6 active clients simultaneously — briefing creative teams, optimizing Meta & Shopee ads, compiling monthly performance reports, and handling client financial administration. Total ad budget managed reached tens of millions IDR per month.">Mengelola 6 klien aktif secara simultan — briefing tim kreatif, optimasi iklan Meta & Shopee, menyusun laporan performa bulanan, dan menangani administrasi keuangan klien. Total ad budget yang dikelola mencapai puluhan juta IDR per bulan.</p>
       <div class="exp-tags"><span class="exp-tag">Meta Ads</span><span class="exp-tag">Shopee Ads</span><span class="exp-tag">Client Management</span><span class="exp-tag">CPAS</span><span class="exp-tag">Reporting</span></div></div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-date">May 2024 — Oct 2025</div>
       <div><div class="exp-co">P.W.D Lab</div><div class="exp-role">Front-End Developer</div>
-      <p class="exp-desc">Membangun dan maintain website ThePublicBook.id, Majolique, dan Jangjo Indonesia (jangjo.com) menggunakan HTML & CSS. Memastikan tampilan responsif dan konsistensi visual identity sesuai brand guideline.</p>
+      <p class="exp-desc" data-id="Membangun dan maintain website ThePublicBook.id, Majolique, dan Jangjo Indonesia (jangjo.com) menggunakan HTML & CSS. Memastikan tampilan responsif dan konsistensi visual identity sesuai brand guideline." data-en="Built and maintained websites for ThePublicBook.id, Majolique, and Jangjo Indonesia (jangjo.com) using HTML & CSS. Ensured responsive design and consistent visual identity aligned with brand guidelines.">Membangun dan maintain website ThePublicBook.id, Majolique, dan Jangjo Indonesia (jangjo.com) menggunakan HTML & CSS. Memastikan tampilan responsif dan konsistensi visual identity sesuai brand guideline.</p>
       <div class="exp-tags"><span class="exp-tag">HTML</span><span class="exp-tag">CSS</span><span class="exp-tag">Responsive Design</span><span class="exp-tag">Figma</span></div></div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-date">Aug 2022 — Jan 2025</div>
       <div><div class="exp-co">Urbanview Hotel Syariah Ratu Kuring</div><div class="exp-role">Coordinator</div>
-      <p class="exp-desc">Mengawasi operasional hotel harian, menyelesaikan keluhan tamu, memverifikasi kesiapan kamar, dan mereview transaksi keuangan bulanan untuk akurasi laporan keuangan.</p>
+      <p class="exp-desc" data-id="Mengawasi operasional hotel harian, menyelesaikan keluhan tamu, memverifikasi kesiapan kamar, dan mereview transaksi keuangan bulanan untuk akurasi laporan keuangan." data-en="Oversaw daily hotel operations, resolved guest complaints, verified room readiness post-housekeeping, and reviewed monthly financial transactions to ensure accurate reporting.">Mengawasi operasional hotel harian, menyelesaikan keluhan tamu, memverifikasi kesiapan kamar, dan mereview transaksi keuangan bulanan untuk akurasi laporan keuangan.</p>
       <div class="exp-tags"><span class="exp-tag">Operations</span><span class="exp-tag">Finance</span><span class="exp-tag">Leadership</span></div></div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-date">Nov 2021 — May 2022</div>
       <div><div class="exp-co">Garuda Indonesia Training Centre</div><div class="exp-role">Learning & Development</div>
-      <p class="exp-desc">Mengembangkan aplikasi Flight Simulator Time Log, mengelola event ILDP (InJourney Leadership Development Program), dan berpartisipasi dalam podcast bersama CEO Garuda Indonesia.</p>
+      <p class="exp-desc" data-id="Mengembangkan aplikasi Flight Simulator Time Log, mengelola event ILDP (InJourney Leadership Development Program), dan berpartisipasi dalam podcast bersama CEO Garuda Indonesia." data-en="Developed a Flight Simulator Time Log application, managed the ILDP (InJourney Leadership Development Program) event, and participated in a podcast with the CEO of Garuda Indonesia.">Mengembangkan aplikasi Flight Simulator Time Log, mengelola event ILDP (InJourney Leadership Development Program), dan berpartisipasi dalam podcast bersama CEO Garuda Indonesia.</p>
       <div class="exp-tags"><span class="exp-tag">App Development</span><span class="exp-tag">Event Management</span><span class="exp-tag">Public Speaking</span></div></div>
     </div>
   </div>
 </section>
 
 <div class="results-wrap" id="results" style="scroll-margin-top:80px;">
-  <div class="sec-label reveal">Campaign Results</div>
-  <h2 class="sec-title reveal">Angka yang<br>bicara sendiri.</h2>
+  <div class="sec-label reveal" data-id="Hasil Kampanye" data-en="Campaign Results">Hasil Kampanye</div>
+  <h2 class="sec-title reveal" data-id="Angka yang<br>bicara sendiri." data-en="Numbers that<br>speak for themselves.">Angka yang<br>bicara sendiri.</h2>
   <div class="metrics-grid">
     <div class="m-card feat reveal">
-      <div><div class="m-icon">Integrated Shopee + CPAS · Jan–Feb 2026</div><div class="m-val">15.15x</div><div class="m-sub">Overall ROAS — naik dari 3.92x.<br>Majolique Fashion Brand.</div></div>
-      <div class="m-growth"><div class="m-growth-num">+287%</div><div class="m-growth-lbl">Peningkatan ROAS</div></div>
+      <div>
+        <div class="m-icon" data-id="Shopee + CPAS Terintegrasi · Jan–Feb 2026" data-en="Integrated Shopee + CPAS · Jan–Feb 2026">Shopee + CPAS Terintegrasi · Jan–Feb 2026</div>
+        <div class="m-val">15.15x</div>
+        <div class="m-sub" data-id="Overall ROAS — naik dari 3.92x.<br>Majolique Fashion Brand." data-en="Overall ROAS — up from 3.92x.<br>Majolique Fashion Brand.">Overall ROAS — naik dari 3.92x.<br>Majolique Fashion Brand.</div>
+      </div>
+      <div class="m-growth">
+        <div class="m-growth-num">+287%</div>
+        <div class="m-growth-lbl" data-id="Peningkatan ROAS" data-en="ROAS Increase">Peningkatan ROAS</div>
+      </div>
     </div>
-    <div class="m-card reveal d1"><div class="m-icon">Meta Ads · UKI Matcha</div><div class="m-val">302K</div><div class="m-sub">Video plays dalam 1 campaign.<br>Budget: Rp 2.000.000</div></div>
-    <div class="m-card reveal d1"><div class="m-icon">Meta Ads · ThePublicBook</div><div class="m-val">243K</div><div class="m-sub">Unique accounts reached.<br>CPR hanya Rp 1.887</div></div>
-    <div class="m-card reveal d2"><div class="m-icon">Shopee Ads · Dec 2025</div><div class="m-val">7.36x</div><div class="m-sub">ROAS Shopee Majolique.<br>Penjualan Rp 19.5M</div></div>
-    <div class="m-card reveal d2"><div class="m-icon">Visero Indonesia · Q4 2025</div><div class="m-val">IDR 11</div><div class="m-sub">CPC Engagement terendah.<br>ER 3.33–4.44%</div></div>
+    <div class="m-card reveal d1"><div class="m-icon">Meta Ads · UKI Matcha</div><div class="m-val">302K</div><div class="m-sub" data-id="Video plays dalam 1 campaign.<br>Budget: Rp 2.000.000" data-en="Video plays in 1 campaign.<br>Budget: Rp 2,000,000">Video plays dalam 1 campaign.<br>Budget: Rp 2.000.000</div></div>
+    <div class="m-card reveal d1"><div class="m-icon">Meta Ads · ThePublicBook</div><div class="m-val">243K</div><div class="m-sub" data-id="Akun unik yang dijangkau.<br>CPR hanya Rp 1.887" data-en="Unique accounts reached.<br>CPR only Rp 1,887">Akun unik yang dijangkau.<br>CPR hanya Rp 1.887</div></div>
+    <div class="m-card reveal d2"><div class="m-icon">Shopee Ads · Des 2025</div><div class="m-val">7.36x</div><div class="m-sub" data-id="ROAS Shopee Majolique.<br>Penjualan Rp 19.5M" data-en="Shopee ROAS Majolique.<br>Sales Rp 19.5M">ROAS Shopee Majolique.<br>Penjualan Rp 19.5M</div></div>
+    <div class="m-card reveal d2"><div class="m-icon">Visero Indonesia · Q4 2025</div><div class="m-val">IDR 11</div><div class="m-sub" data-id="CPC Engagement terendah.<br>ER 3.33–4.44%" data-en="Lowest CPC Engagement.<br>ER 3.33–4.44%">CPC Engagement terendah.<br>ER 3.33–4.44%</div></div>
   </div>
   <div class="roas-box reveal">
-    <div class="roas-title">Shopee Ads ROAS Growth — Majolique</div>
-    <div class="roas-sub">Pertumbuhan konsisten dengan strategi GMV Max (Aug 2025 – Mar 2026)</div>
+    <div class="roas-title" data-id="Pertumbuhan ROAS Shopee Ads — Majolique" data-en="Shopee Ads ROAS Growth — Majolique">Pertumbuhan ROAS Shopee Ads — Majolique</div>
+    <div class="roas-sub" data-id="Pertumbuhan konsisten dengan strategi GMV Max (Agu 2025 – Mar 2026)" data-en="Consistent growth with GMV Max strategy (Aug 2025 – Mar 2026)">Pertumbuhan konsisten dengan strategi GMV Max (Agu 2025 – Mar 2026)</div>
     <div class="roas-bars" id="roasChart">
-      <div class="roas-col"><div class="roas-val">3.90</div><div class="roas-bar" style="background:var(--bar-a);--h:36%"></div><div class="roas-month">Aug</div></div>
-      <div class="roas-col"><div class="roas-val">5.61</div><div class="roas-bar" style="background:var(--bar-b);--h:52%"></div><div class="roas-month">Sep</div></div>
-      <div class="roas-col"><div class="roas-val">7.23</div><div class="roas-bar" style="background:var(--bar-c);--h:65%"></div><div class="roas-month">Oct</div></div>
-      <div class="roas-col"><div class="roas-val">5.82</div><div class="roas-bar" style="background:var(--bar-b);--h:53%"></div><div class="roas-month">Nov</div></div>
-      <div class="roas-col"><div class="roas-val">7.36</div><div class="roas-bar" style="background:var(--bar-c);--h:67%"></div><div class="roas-month">Dec</div></div>
-      <div class="roas-col"><div class="roas-val">10.58</div><div class="roas-bar" style="background:var(--accent2);--h:84%"></div><div class="roas-month">Feb</div></div>
-      <div class="roas-col"><div class="roas-val">15.15</div><div class="roas-bar" style="background:var(--bar-top);--h:100%"></div><div class="roas-month">Best</div></div>
+      <div class="roas-col"><div class="roas-val">3.90</div><div class="roas-bar" style="background:var(--bar-a);--h:36%"></div><div class="roas-month" data-id="Agu" data-en="Aug">Agu</div></div>
+      <div class="roas-col"><div class="roas-val">5.61</div><div class="roas-bar" style="background:var(--bar-b);--h:52%"></div><div class="roas-month" data-id="Sep" data-en="Sep">Sep</div></div>
+      <div class="roas-col"><div class="roas-val">7.23</div><div class="roas-bar" style="background:var(--bar-c);--h:65%"></div><div class="roas-month" data-id="Okt" data-en="Oct">Okt</div></div>
+      <div class="roas-col"><div class="roas-val">5.82</div><div class="roas-bar" style="background:var(--bar-b);--h:53%"></div><div class="roas-month" data-id="Nov" data-en="Nov">Nov</div></div>
+      <div class="roas-col"><div class="roas-val">7.36</div><div class="roas-bar" style="background:var(--bar-c);--h:67%"></div><div class="roas-month" data-id="Des" data-en="Dec">Des</div></div>
+      <div class="roas-col"><div class="roas-val">10.58</div><div class="roas-bar" style="background:var(--accent2);--h:84%"></div><div class="roas-month" data-id="Feb" data-en="Feb">Feb</div></div>
+      <div class="roas-col"><div class="roas-val">15.15</div><div class="roas-bar" style="background:var(--bar-top);--h:100%"></div><div class="roas-month" data-id="Terbaik" data-en="Best">Terbaik</div></div>
     </div>
   </div>
 </div>
 
 <section id="skills">
-  <div class="sec-label reveal">Skills & Tools</div>
-  <h2 class="sec-title reveal">Senjata yang<br>saya bawa.</h2>
+  <div class="sec-label reveal" data-id="Keahlian & Alat" data-en="Skills & Tools">Keahlian & Alat</div>
+  <h2 class="sec-title reveal" data-id="Skill yang<br>saya bawa." data-en="Skills I<br>bring to the table.">Skill yang<br>saya bawa.</h2>
   <div class="skills-grid">
     <div class="skill-group reveal">
-      <div class="skill-gtitle">Paid Advertising</div>
+      <div class="skill-gtitle" data-id="Iklan Berbayar" data-en="Paid Advertising">Iklan Berbayar</div>
       <div class="skill-items">
         <div class="skill-item"><div class="skill-row"><span class="skill-name">Meta Ads (Traffic, Awareness, CPAS)</span><span class="skill-pct">95%</span></div><div class="skill-track"><div class="skill-fill" style="--w:95%"></div></div></div>
         <div class="skill-item"><div class="skill-row"><span class="skill-name">Shopee Ads (GMV Max)</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Audience Targeting & Segmentation</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" style="--w:92%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Campaign Analytics & Reporting</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Penargetan & Segmentasi Audiens" data-en="Audience Targeting & Segmentation">Penargetan & Segmentasi Audiens</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" style="--w:92%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Analisis & Pelaporan Kampanye" data-en="Campaign Analytics & Reporting">Analisis & Pelaporan Kampanye</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
       </div>
     </div>
     <div class="skill-group reveal d1">
-      <div class="skill-gtitle">Client Management</div>
+      <div class="skill-gtitle" data-id="Manajemen Klien" data-en="Client Management">Manajemen Klien</div>
       <div class="skill-items">
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Account Executive (multi-client)</span><span class="skill-pct">93%</span></div><div class="skill-track"><div class="skill-fill" style="--w:93%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Campaign Planning & Briefing</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Client Presentation & Reporting</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Finance & Invoice Management</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill" style="--w:82%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Account Executive (multi-klien)" data-en="Account Executive (multi-client)">Account Executive (multi-klien)</span><span class="skill-pct">93%</span></div><div class="skill-track"><div class="skill-fill" style="--w:93%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Perencanaan & Briefing Kampanye" data-en="Campaign Planning & Briefing">Perencanaan & Briefing Kampanye</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Presentasi & Laporan Klien" data-en="Client Presentation & Reporting">Presentasi & Laporan Klien</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Manajemen Keuangan & Invoice" data-en="Finance & Invoice Management">Manajemen Keuangan & Invoice</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill" style="--w:82%"></div></div></div>
       </div>
     </div>
     <div class="skill-group reveal d2">
-      <div class="skill-gtitle">Development & Design</div>
+      <div class="skill-gtitle" data-id="Pengembangan & Desain" data-en="Development & Design">Pengembangan & Desain</div>
       <div class="skill-items">
         <div class="skill-item"><div class="skill-row"><span class="skill-name">HTML & CSS</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div></div>
         <div class="skill-item"><div class="skill-row"><span class="skill-name">Figma & Canva</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="--w:80%"></div></div></div>
@@ -467,45 +491,47 @@ footer span{font-size:12px;color:var(--fg-muted);}
       </div>
     </div>
     <div class="skill-group reveal d3">
-      <div class="skill-gtitle">Soft Skills</div>
+      <div class="skill-gtitle" data-id="Kemampuan Soft Skill" data-en="Soft Skills">Kemampuan Soft Skill</div>
       <div class="skill-items">
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Leadership & Negotiation</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Problem Solving & Critical Thinking</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" style="--w:92%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">Public Speaking</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div></div>
-        <div class="skill-item"><div class="skill-row"><span class="skill-name">English & Bahasa Indonesia</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Kepemimpinan & Negosiasi" data-en="Leadership & Negotiation">Kepemimpinan & Negosiasi</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Pemecahan Masalah & Berpikir Kritis" data-en="Problem Solving & Critical Thinking">Pemecahan Masalah & Berpikir Kritis</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" style="--w:92%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Berbicara di Depan Umum" data-en="Public Speaking">Berbicara di Depan Umum</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name" data-id="Bahasa Inggris & Bahasa Indonesia" data-en="English & Bahasa Indonesia">Bahasa Inggris & Bahasa Indonesia</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
       </div>
     </div>
   </div>
-  <div class="sec-label reveal" style="margin-top:72px;margin-bottom:0">Clients Handled</div>
+  <div class="sec-label reveal" style="margin-top:72px;margin-bottom:0" data-id="Klien yang Ditangani" data-en="Clients Handled">Klien yang Ditangani</div>
   <div class="clients-row reveal">
-    <div class="client-item"><div class="client-name">Visero</div><div class="client-type">Fashion</div></div>
+    <div class="client-item"><div class="client-name">Visero</div><div class="client-type" data-id="Fashion" data-en="Fashion">Fashion</div></div>
     <div class="client-item"><div class="client-name">Korté Chocolate</div><div class="client-type">F&B</div></div>
     <div class="client-item"><div class="client-name">Latré Patisserie</div><div class="client-type">F&B</div></div>
-    <div class="client-item"><div class="client-name">Perempuan Gagal</div><div class="client-type">Content</div></div>
-    <div class="client-item"><div class="client-name">Natural Indococonut</div><div class="client-type">Retail</div></div>
-    <div class="client-item"><div class="client-name">FAMMA Nusantara</div><div class="client-type">Retail</div></div>
+    <div class="client-item"><div class="client-name">Perempuan Gagal</div><div class="client-type" data-id="Konten" data-en="Content">Konten</div></div>
+    <div class="client-item"><div class="client-name">Natural Indococonut</div><div class="client-type" data-id="Ritel" data-en="Retail">Ritel</div></div>
+    <div class="client-item"><div class="client-name">FAMMA Nusantara</div><div class="client-type" data-id="Ritel" data-en="Retail">Ritel</div></div>
   </div>
 </section>
 
 <div class="cta-wrap" id="contact" style="scroll-margin-top:80px;">
-  <div class="cta-bg">HIRE ME</div>
-  <div class="sec-label reveal">Let's Work Together</div>
-  <h2 class="sec-title reveal">Siap membawa<br>ROI ke level<br>berikutnya?</h2>
+  <div class="cta-bg" data-id="REKRUT SAYA" data-en="HIRE ME">REKRUT SAYA</div>
+  <div class="sec-label reveal" data-id="Mari Bekerja Sama" data-en="Let's Work Together">Mari Bekerja Sama</div>
+  <h2 class="sec-title reveal" data-id="Siap membawa<br>ROI ke level<br>berikutnya?" data-en="Ready to take<br>your ROI to the<br>next level?">Siap membawa<br>ROI ke level<br>berikutnya?</h2>
   <div class="cta-row reveal">
     <div class="contact-list">
-      <div class="contact-row"><span class="c-lbl">Phone</span><a class="c-val" href="tel:085111228339">085111228339</a></div>
+      <div class="contact-row"><span class="c-lbl" data-id="Telepon" data-en="Phone">Telepon</span><a class="c-val" href="tel:085111228339">085111228339</a></div>
       <div class="contact-row"><span class="c-lbl">Email</span><a class="c-val" href="mailto:leonardosteven050@gmail.com">leonardosteven050@gmail.com</a></div>
       <div class="contact-row"><span class="c-lbl">LinkedIn</span><a class="c-val" href="#">steveleonardo</a></div>
       <div class="contact-row"><span class="c-lbl">Instagram</span><a class="c-val" href="#">@Elbaee</a></div>
-      <div class="contact-row"><span class="c-lbl">Location</span><span class="c-val">Kelapa Gading, Jakarta Utara</span></div>
+      <div class="contact-row"><span class="c-lbl" data-id="Lokasi" data-en="Location">Lokasi</span><span class="c-val">Kelapa Gading, Jakarta Utara</span></div>
     </div>
-    <a class="hire-btn" href="mailto:leonardosteven050@gmail.com">Let's Talk <span class="arr">→</span></a>
+    <a class="hire-btn" href="mailto:leonardosteven050@gmail.com">
+      <span data-id="Mari Ngobrol" data-en="Let's Talk">Mari Ngobrol</span> <span class="arr">→</span>
+    </a>
   </div>
 </div>
 
 <footer>
   <span>© 2026 Leonardo Steven</span>
-  <span>GPA 3.53 · Informatics · Multimedia Nusantara University</span>
+  <span data-id="IPK 3.53 · Informatika · Universitas Multimedia Nusantara" data-en="GPA 3.53 · Informatics · Multimedia Nusantara University">IPK 3.53 · Informatika · Universitas Multimedia Nusantara</span>
 </footer>
 
 <script>
@@ -515,6 +541,44 @@ let mx=0,my=0,fx=0,fy=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';});
 (function loop(){fx+=(mx-fx-18)*.12;fy+=(my-fy-18)*.12;fol.style.left=fx+'px';fol.style.top=fy+'px';requestAnimationFrame(loop);})();
 document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.style.transform='scale(2.5)');el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');});
+
+// LANGUAGE TOGGLE — default ID
+let currentLang = localStorage.getItem('lang') || 'id';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  // Update all translatable elements
+  document.querySelectorAll('[data-id][data-en]').forEach(el => {
+    const text = lang === 'id' ? el.getAttribute('data-id') : el.getAttribute('data-en');
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = text;
+    } else {
+      el.innerHTML = text;
+    }
+  });
+  // Update toggle buttons
+  ['langActive','langActive2'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.textContent = lang === 'id' ? 'ID' : 'EN';
+  });
+  ['langOther','langOther2'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.textContent = lang === 'id' ? 'EN' : 'ID';
+  });
+  // Update html lang attribute
+  document.documentElement.lang = lang === 'id' ? 'id' : 'en';
+}
+
+function doLangToggle() {
+  applyLang(currentLang === 'id' ? 'en' : 'id');
+}
+
+document.getElementById('langBtn').addEventListener('click', doLangToggle);
+document.getElementById('langBtn2').addEventListener('click', doLangToggle);
+
+// Apply saved lang on load
+applyLang(currentLang);
 
 // THEME — default DARK
 const root=document.documentElement;
