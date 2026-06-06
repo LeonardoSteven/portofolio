@@ -6,1507 +6,567 @@
 <title>Leonardo Steven — Digital Marketing & Account Executive</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f2ec;
-    --cream: #ede8de;
-    --accent: #c8ff00;
-    --accent2: #ff4d00;
-    --muted: #6b6b6b;
-    --card-bg: #141414;
-    --border: rgba(255,255,255,0.08);
-  }
+:root {
+  --bg:#0a0a0a; --bg-sub:#111; --bg-card:#161616; --bg-card2:#1a1a1a;
+  --bg-featured:#c8ff00; --bg-roas:#161616;
+  --fg:#f5f2ec; --fg-muted:#555; --fg-invert:#0a0a0a;
+  --accent:#c8ff00; --accent2:#ff4d00;
+  --border:rgba(255,255,255,0.07); --border-hover:rgba(200,255,0,0.35);
+  --hero-stroke:rgba(255,255,255,0.04); --exp-hover:rgba(200,255,0,0.04);
+  --bar-a:#2e2e2e; --bar-b:#3e3e3e; --bar-c:#505050; --bar-top:#c8ff00;
+  --metric-hover:#1e1e1e; --skill-track:rgba(255,255,255,0.07); --skill-fill:#c8ff00;
+  --label:#c8ff00; --highlight:#c8ff00;
+  --nav-bg:rgba(10,10,10,0.93); --cursor:#c8ff00;
+  --mob-bg:rgba(10,10,10,0.97); --scroll-fill:#c8ff00;
+  --scroll-bg:rgba(255,255,255,0.15);
+  --knob-bg:#0a0a0a; --knob-x:24px; --track-bg:#c8ff00;
+  --sun-op:0.35; --moon-op:1; --noise-op:0.04;
+  --cta-bg:#c8ff00; --cta-fg:#0a0a0a; --cta-muted:rgba(0,0,0,0.45);
+  --cta-stroke:rgba(0,0,0,0.08); --cta-btn-bg:#0a0a0a; --cta-btn-fg:#c8ff00;
+}
+:root.light {
+  --bg:#fff; --bg-sub:#f9f8f6; --bg-card:#f4f3f1; --bg-card2:#edece9;
+  --bg-featured:#0f0f0f; --bg-roas:#f0ede8;
+  --fg:#0f0f0f; --fg-muted:#999; --fg-invert:#fff;
+  --accent:#0f0f0f; --accent2:#ff4d00;
+  --border:rgba(0,0,0,0.08); --border-hover:rgba(0,0,0,0.25);
+  --hero-stroke:rgba(0,0,0,0.04); --exp-hover:rgba(0,0,0,0.025);
+  --bar-a:#d8d4cc; --bar-b:#c8c4bc; --bar-c:#b0aca4; --bar-top:#0f0f0f;
+  --metric-hover:#e8e6e2; --skill-track:rgba(0,0,0,0.07); --skill-fill:#0f0f0f;
+  --label:#999; --highlight:#0f0f0f;
+  --nav-bg:rgba(255,255,255,0.95); --cursor:#0f0f0f;
+  --mob-bg:rgba(255,255,255,0.98); --scroll-fill:#0f0f0f;
+  --scroll-bg:rgba(0,0,0,0.1);
+  --knob-bg:#fff; --knob-x:0px; --track-bg:#0f0f0f;
+  --sun-op:1; --moon-op:0.35; --noise-op:0.02;
+  --cta-bg:#f4f3f1; --cta-fg:#0f0f0f; --cta-muted:#999;
+  --cta-stroke:rgba(0,0,0,0.05); --cta-btn-bg:#0f0f0f; --cta-btn-fg:#ffffff;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;
+  transition:background-color .45s ease,color .45s ease,border-color .45s ease,opacity .45s ease;}
+.skill-fill{transition:width 1.5s cubic-bezier(.16,1,.3,1),background-color .45s ease !important;}
+.roas-bar{transition:height 1.5s cubic-bezier(.16,1,.3,1),background-color .45s ease !important;}
+.toggle-knob{transition:transform .4s cubic-bezier(.34,1.56,.64,1),background-color .45s ease !important;}
+.line-inner,.hero-tag,.hero-bottom,.cursor,.cursor-follower,.marquee-track{transition:none !important;}
+html{scroll-behavior:smooth;}
+[id]{scroll-margin-top:80px;}
+body{background:var(--bg);color:var(--fg);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");pointer-events:none;z-index:900;opacity:var(--noise-op);}
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* CURSOR */
+.cursor{width:10px;height:10px;background:var(--cursor);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference;}
+.cursor-follower{width:36px;height:36px;border:1px solid var(--cursor);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;opacity:.4;}
 
-  html { scroll-behavior: smooth; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 60px;display:flex;justify-content:space-between;align-items:center;background:transparent;}
+nav.scrolled{background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--fg);text-decoration:none;letter-spacing:-.5px;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:40px;}
+.nav-links a{color:var(--fg-muted);text-decoration:none;font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
+.nav-links a:hover{color:var(--fg);}
+.nav-right{display:flex;align-items:center;gap:16px;}
 
-  /* Scroll offset so fixed navbar doesn't cover section headings */
-  [id] { scroll-margin-top: 80px; }
+/* TOGGLE */
+.theme-toggle{background:none;border:1.5px solid var(--border);border-radius:100px;padding:4px 5px;cursor:pointer;display:flex;align-items:center;}
+.theme-toggle:hover{border-color:var(--fg-muted);}
+.toggle-track{width:46px;height:22px;background:var(--track-bg);border-radius:100px;position:relative;display:flex;align-items:center;}
+.toggle-knob{position:absolute;left:3px;width:16px;height:16px;border-radius:50%;background:var(--knob-bg);transform:translateX(var(--knob-x));z-index:1;}
+.toggle-icon{position:absolute;font-size:10px;line-height:1;}
+.t-sun{left:5px;opacity:var(--sun-op);} .t-moon{right:5px;opacity:var(--moon-op);}
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    cursor: none;
-  }
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;z-index:210;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--fg);border-radius:2px;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--mob-bg);z-index:180;flex-direction:column;justify-content:center;align-items:center;gap:36px;backdrop-filter:blur(24px);opacity:0;transition:opacity .3s ease !important;}
+.mobile-menu.open{opacity:1;}
+.mobile-menu a{font-family:'Syne',sans-serif;font-size:38px;font-weight:700;color:var(--fg);text-decoration:none;letter-spacing:-.02em;}
+.mobile-menu a:hover{color:var(--accent);}
 
-  /* CUSTOM CURSOR */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease;
-    mix-blend-mode: difference;
-  }
-  .cursor-follower {
-    width: 40px; height: 40px;
-    border: 1px solid rgba(200,255,0,0.4);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 60px 80px;position:relative;overflow:hidden;}
+.hero-bg-num{position:absolute;top:50%;right:-30px;transform:translateY(-50%);font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(180px,28vw,400px);color:transparent;-webkit-text-stroke:1px var(--hero-stroke);line-height:1;pointer-events:none;user-select:none;}
+.hero-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;opacity:0;transform:translateY(16px);animation:fadeUp .7s .3s forwards;}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(52px,9vw,120px);line-height:.92;letter-spacing:-.03em;margin-bottom:40px;}
+.hero-title .line{display:block;overflow:hidden;}
+.hero-title .line-inner{display:block;opacity:0;transform:translateY(110%);animation:slideUp 1s cubic-bezier(.16,1,.3,1) forwards;}
+.hero-title .line:nth-child(1) .line-inner{animation-delay:.15s;}
+.hero-title .line:nth-child(2) .line-inner{animation-delay:.28s;}
+.hero-title .line:nth-child(3) .line-inner{animation-delay:.41s;}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;opacity:0;animation:fadeUp .7s .85s forwards;}
+.hero-desc{max-width:360px;color:var(--fg-muted);font-size:14px;line-height:1.75;}
+.hero-stats{display:flex;gap:44px;}
+.stat-num{font-family:'Syne',sans-serif;font-size:34px;font-weight:700;color:var(--fg);line-height:1;}
+.stat-num span{color:var(--accent);}
+.stat-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);margin-top:5px;}
+.scroll-ind{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .7s 1.2s forwards;}
+.scroll-ind span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-muted);}
+.scroll-bar{width:1px;height:52px;background:var(--scroll-bg);position:relative;overflow:hidden;}
+.scroll-bar::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--scroll-fill);animation:scrollAnim 1.6s 1.5s infinite ease-in-out;}
 
-  /* NOISE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.4;
-  }
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;background:var(--bg-sub);}
+.marquee-track{display:flex;gap:44px;animation:marquee 22s linear infinite;white-space:nowrap;}
+.m-item{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.m-dot{color:var(--accent);font-size:18px;line-height:0;}
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 24px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    mix-blend-mode: normal;
-  }
-  nav::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.9), transparent);
-    backdrop-filter: blur(0px);
-    z-index: -1;
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: -0.5px;
-    color: var(--white);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 40px; }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--white); }
+/* SECTIONS */
+section{padding:120px 60px;}
+.sec-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--label);margin-bottom:56px;display:flex;align-items:center;gap:14px;}
+.sec-label::before{content:'';width:36px;height:1px;background:var(--label);}
+.sec-title{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(34px,5vw,62px);line-height:1.05;letter-spacing:-.02em;margin-bottom:56px;}
+.divider{height:1px;background:var(--border);margin:0 60px;}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 60px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-bg-number {
-    position: absolute;
-    top: 50%;
-    right: -40px;
-    transform: translateY(-50%);
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(200px, 30vw, 420px);
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255,255,255,0.04);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
-  .hero-tag {
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s 0.3s forwards;
-  }
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(52px, 9vw, 120px);
-    line-height: 0.92;
-    letter-spacing: -0.03em;
-    margin-bottom: 40px;
-  }
-  .hero-title .line {
-    display: block;
-    overflow: hidden;
-  }
-  .hero-title .line-inner {
-    display: block;
-    opacity: 0;
-    transform: translateY(100%);
-    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  .hero-title .line:nth-child(1) .line-inner { animation-delay: 0.2s; }
-  .hero-title .line:nth-child(2) .line-inner { animation-delay: 0.35s; }
-  .hero-title .line:nth-child(3) .line-inner { animation-delay: 0.5s; }
-  .hero-title .accent-word { color: var(--accent); }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s cubic-bezier(.16,1,.3,1) !important;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal.d1{transition-delay:.1s !important;} .reveal.d2{transition-delay:.2s !important;}
+.reveal.d3{transition-delay:.3s !important;} .reveal.d4{transition-delay:.4s !important;}
 
-  .hero-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.9s forwards;
-  }
-  .hero-desc {
-    max-width: 380px;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  .hero-stats {
-    display: flex;
-    gap: 48px;
-  }
-  .hero-stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1;
-  }
-  .hero-stat-num span { color: var(--accent); }
-  .hero-stat-label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 6px;
-  }
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about-text{font-size:17px;line-height:1.8;color:var(--fg-muted);}
+.about-text strong{color:var(--fg);font-weight:500;}
+.about-hl{display:flex;flex-direction:column;gap:20px;}
+.h-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:26px 30px;transition:border-color .3s,transform .3s,background-color .45s ease !important;}
+.h-card:hover{border-color:var(--border-hover);transform:translateX(7px);}
+.h-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--highlight);line-height:1;margin-bottom:5px;}
+.h-lbl{font-size:13px;color:var(--fg-muted);line-height:1.5;}
 
-  .scroll-line {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    animation: fadeUp 1s 1.2s forwards;
-  }
-  .scroll-line span {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .scroll-bar {
-    width: 1px;
-    height: 60px;
-    background: var(--muted);
-    position: relative;
-    overflow: hidden;
-  }
-  .scroll-bar::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--accent);
-    animation: scrollDown 1.5s 1.5s infinite ease-in-out;
-  }
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column;}
+.exp-item{display:grid;grid-template-columns:190px 1fr;gap:36px;padding:44px 0;border-bottom:1px solid var(--border);position:relative;}
+.exp-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(to right,var(--exp-hover),transparent);transition:width .45s ease !important;pointer-events:none;}
+.exp-item:hover::before{width:100%;}
+.exp-date{font-size:11px;letter-spacing:.07em;color:var(--fg-muted);padding-top:5px;text-transform:uppercase;}
+.exp-co{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--label);margin-bottom:7px;}
+.exp-role{font-family:'Syne',sans-serif;font-size:24px;font-weight:700;color:var(--fg);margin-bottom:14px;line-height:1.2;}
+.exp-desc{font-size:13px;color:var(--fg-muted);line-height:1.8;max-width:540px;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+.exp-tag{font-size:10px;letter-spacing:.05em;padding:3px 11px;border:1px solid var(--border);border-radius:100px;color:var(--fg-muted);text-transform:uppercase;}
 
-  /* SECTION STYLES */
-  section {
-    padding: 120px 60px;
-    position: relative;
-  }
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 60px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--accent);
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: clamp(36px, 5vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 60px;
-  }
+/* RESULTS */
+.results-wrap{background:var(--bg-sub);padding:120px 60px;}
+.results-wrap .sec-label{color:var(--accent2);}
+.results-wrap .sec-label::before{background:var(--accent2);}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:2px;}
+.m-card{background:var(--bg-card);padding:44px 36px;cursor:default;}
+.m-card:hover{background:var(--metric-hover);}
+.m-card.feat{background:var(--bg-featured);grid-column:span 2;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;}
+.m-icon{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:14px;}
+.m-card.feat .m-icon{color:var(--fg-invert);opacity:.5;}
+.m-val{font-family:'Syne',sans-serif;font-size:clamp(44px,6vw,76px);font-weight:800;line-height:.9;color:var(--fg);margin-bottom:10px;}
+.m-card.feat .m-val{color:var(--fg-invert);}
+.m-sub{font-size:12px;color:var(--fg-muted);line-height:1.55;}
+.m-card.feat .m-sub{color:var(--fg-invert);opacity:.6;}
+.m-growth{text-align:right;flex-shrink:0;}
+.m-growth-num{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;color:var(--fg-invert);line-height:1;}
+.m-growth-lbl{font-size:11px;color:var(--fg-invert);opacity:.5;margin-top:4px;}
 
-  /* REVEAL ANIMATION */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
+/* ROAS */
+.roas-box{background:var(--bg-roas);border-radius:20px;padding:44px;margin-top:56px;}
+.roas-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--fg);margin-bottom:6px;}
+.roas-sub{font-size:13px;color:var(--fg-muted);margin-bottom:36px;}
+.roas-bars{display:flex;align-items:flex-end;gap:14px;height:150px;}
+.roas-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end;}
+.roas-val{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--fg);white-space:nowrap;}
+.roas-bar{width:100%;border-radius:6px 6px 0 0;height:0;}
+.roas-bar.anim{height:var(--h);}
+.roas-month{font-size:10px;color:var(--fg-muted);letter-spacing:.05em;text-transform:uppercase;}
 
-  /* DIVIDER */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin: 0 60px;
-    width: calc(100% - 120px);
-  }
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;}
+.skill-group{background:var(--bg-card);padding:44px 36px;}
+.skill-gtitle{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--label);margin-bottom:28px;}
+.skill-items{display:flex;flex-direction:column;gap:18px;}
+.skill-item{display:flex;flex-direction:column;gap:7px;}
+.skill-row{display:flex;justify-content:space-between;font-size:13px;}
+.skill-name{color:var(--fg);} .skill-pct{color:var(--fg-muted);}
+.skill-track{height:2px;background:var(--skill-track);border-radius:2px;overflow:hidden;}
+.skill-fill{height:100%;background:var(--skill-fill);border-radius:2px;width:0;}
+.skill-fill.anim{width:var(--w);}
 
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .about-text {
-    font-size: 18px;
-    line-height: 1.8;
-    color: rgba(245,242,236,0.75);
-    font-weight: 300;
-  }
-  .about-text strong { color: var(--white); font-weight: 500; }
-  .about-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .highlight-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 32px;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .highlight-card:hover {
-    border-color: rgba(200,255,0,0.3);
-    transform: translateX(8px);
-  }
-  .highlight-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 40px;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .highlight-label {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
+/* CLIENTS */
+.clients-row{display:flex;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:56px;}
+.client-item{flex:1;padding:28px 20px;text-align:center;border-right:1px solid var(--border);transition:background-color .3s !important;}
+.client-item:last-child{border-right:none;}
+.client-item:hover{background:var(--bg-card);}
+.client-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--fg);margin-bottom:4px;}
+.client-type{font-size:10px;color:var(--fg-muted);letter-spacing:.05em;}
 
-  /* EXPERIENCE */
-  .experience-list { display: flex; flex-direction: column; }
-  .exp-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 40px;
-    padding: 48px 0;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.3s;
-    position: relative;
-  }
-  .exp-item::after {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 0;
-    background: linear-gradient(to right, rgba(200,255,0,0.05), transparent);
-    transition: width 0.5s ease;
-    pointer-events: none;
-  }
-  .exp-item:hover::after { width: 100%; }
-  .exp-date {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    padding-top: 6px;
-    text-transform: uppercase;
-  }
-  .exp-company {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-  .exp-role {
-    font-family: 'Syne', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-  .exp-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 560px;
-  }
-  .exp-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 16px;
-  }
-  .exp-tag {
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    padding: 4px 12px;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
+/* CTA */
+.cta-wrap{background:var(--cta-bg);padding:120px 60px;position:relative;overflow:hidden;border-top:1px solid var(--border);}
+.cta-bg{position:absolute;bottom:-24px;left:-8px;font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(100px,16vw,180px);color:transparent;-webkit-text-stroke:2px var(--cta-stroke);line-height:1;pointer-events:none;user-select:none;white-space:nowrap;}
+.cta-wrap .sec-label{color:var(--cta-muted);}
+.cta-wrap .sec-label::before{background:var(--cta-muted);}
+.cta-wrap .sec-title{color:var(--cta-fg);}
+.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;position:relative;z-index:1;}
+.contact-list{display:flex;flex-direction:column;gap:14px;}
+.contact-row{display:flex;gap:14px;align-items:center;}
+.c-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--cta-muted);min-width:72px;}
+.c-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--cta-fg);text-decoration:none;}
+.c-val:hover{text-decoration:underline;}
+.hire-btn{display:inline-flex;align-items:center;gap:14px;background:var(--cta-btn-bg);color:var(--cta-btn-fg);font-family:'Syne',sans-serif;font-size:15px;font-weight:700;padding:18px 36px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:transform .3s,gap .3s,background-color .45s ease,color .45s ease !important;}
+.hire-btn:hover{transform:scale(1.03);gap:20px;}
+.hire-btn .arr{width:22px;height:22px;border-radius:50%;background:var(--cta-btn-fg);color:var(--cta-btn-bg);display:flex;align-items:center;justify-content:center;font-size:13px;}
 
-  /* RESULTS / METRICS */
-  .results-section {
-    background: var(--white);
-    color: var(--black);
-    padding: 120px 60px;
-  }
-  .results-section .section-label { color: var(--accent2); }
-  .results-section .section-label::before { background: var(--accent2); }
-  .results-section .section-title { color: var(--black); }
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-bottom: 2px;
-  }
-  .metric-card {
-    background: var(--cream);
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-    cursor: default;
-  }
-  .metric-card:hover { background: #e0dace; }
-  .metric-card.featured {
-    background: var(--black);
-    color: var(--white);
-    grid-column: span 2;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 40px;
-  }
-  .metric-icon {
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #999;
-    margin-bottom: 16px;
-  }
-  .metric-featured .metric-icon { color: var(--muted); }
-  .metric-value {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(48px, 6vw, 80px);
-    font-weight: 800;
-    line-height: 0.9;
-    color: var(--black);
-    margin-bottom: 12px;
-  }
-  .metric-card.featured .metric-value { color: var(--accent); }
-  .metric-sub {
-    font-size: 13px;
-    color: #888;
-    line-height: 1.5;
-  }
-  .metric-card.featured .metric-sub { color: var(--muted); }
+footer{padding:36px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+footer span{font-size:12px;color:var(--fg-muted);}
 
-  /* ROAS CHART */
-  .roas-section {
-    background: var(--card-bg);
-    border-radius: 24px;
-    padding: 48px;
-    margin-top: 60px;
-  }
-  .roas-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--black);
-    margin-bottom: 8px;
-  }
-  .roas-sub { font-size: 13px; color: var(--muted); margin-bottom: 40px; }
-  .roas-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 16px;
-    height: 160px;
-    padding: 0 8px;
-  }
-  .roas-bar-wrap {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    height: 100%;
-    justify-content: flex-end;
-  }
-  .roas-bar {
-    width: 100%;
-    border-radius: 8px 8px 0 0;
-    transition: height 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    height: 0;
-  }
-  .roas-bar.animated { height: var(--target-h); }
-  .roas-bar-val {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--white);
-    white-space: nowrap;
-  }
-  .roas-bar-month {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+/* KEYFRAMES */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@keyframes slideUp{to{opacity:1;transform:translateY(0);}}
+@keyframes scrollAnim{0%{top:-100%}50%{top:0}100%{top:100%}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* SKILLS */
-  .skills-section {
-    background: var(--black);
-  }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-  }
-  .skill-group {
-    background: var(--card-bg);
-    padding: 48px 40px;
-  }
-  .skill-group-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 32px;
-  }
-  .skill-items { display: flex; flex-direction: column; gap: 20px; }
-  .skill-item { display: flex; flex-direction: column; gap: 8px; }
-  .skill-name {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: var(--white);
-  }
-  .skill-pct { color: var(--muted); }
-  .skill-track {
-    height: 2px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .skill-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 2px;
-    width: 0;
-    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .skill-fill.animated { width: var(--target-w); }
+/* TABLET */
+@media(min-width:769px)and(max-width:1024px){
+  nav{padding:20px 40px;}
+  section,.results-wrap,.cta-wrap{padding:80px 40px;}
+  .divider{margin:0 40px;}
+  .hero{padding:0 40px 72px;}
+  .hero-title{font-size:clamp(46px,8vw,80px);}
+  .about-grid{grid-template-columns:1fr 1fr;gap:48px;}
+  .metrics-grid{grid-template-columns:1fr 1fr;}
+  .m-card.feat{grid-column:span 2;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .clients-row{flex-wrap:wrap;}
+  .client-item{flex:1 1 30%;}
+  .cta-row{flex-direction:column;align-items:flex-start;gap:32px;}
+  footer{padding:28px 40px;}
+}
 
-  /* CLIENTS */
-  .clients-row {
-    display: flex;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-top: 60px;
-  }
-  .client-item {
-    flex: 1;
-    padding: 32px 24px;
-    border-right: 1px solid var(--border);
-    text-align: center;
-    transition: background 0.3s;
-    cursor: default;
-  }
-  .client-item:last-child { border-right: none; }
-  .client-item:hover { background: var(--card-bg); }
-  .client-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
-  .client-type { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
-
-  /* CTA */
-  .cta-section {
-    background: var(--accent);
-    color: var(--black);
-    padding: 120px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-bg-text {
-    position: absolute;
-    bottom: -30px;
-    left: -10px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 180px;
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(0,0,0,0.08);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
-  }
-  .cta-section .section-title {
-    color: var(--black);
-    margin-bottom: 40px;
-  }
-  .cta-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
-    position: relative;
-    z-index: 1;
-  }
-  .contact-items {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .contact-item {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-  .contact-label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.5);
-    min-width: 80px;
-  }
-  .contact-val {
-    font-family: 'Syne', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--black);
-    text-decoration: none;
-  }
-  .contact-val:hover { text-decoration: underline; }
-  .hire-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--black);
-    color: var(--accent);
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    padding: 20px 40px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: transform 0.3s, gap 0.3s;
-    cursor: pointer;
-    border: none;
-  }
-  .hire-btn:hover { transform: scale(1.03); gap: 24px; }
-  .hire-btn .arrow {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent);
-    border-radius: 50%;
-    color: var(--black);
-    font-size: 14px;
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 40px 60px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-copy { font-size: 13px; color: var(--muted); }
-  .footer-made { font-size: 13px; color: var(--muted); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes slideUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scrollDown {
-    0% { top: -100%; }
-    50% { top: 0; }
-    100% { top: 100%; }
-  }
-
-  /* MARQUEE */
-  .marquee-wrapper {
-    overflow: hidden;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 0;
-    margin: 0;
-    background: var(--card-bg);
-  }
-  .marquee-track {
-    display: flex;
-    gap: 48px;
-    animation: marquee 20s linear infinite;
-    white-space: nowrap;
-  }
-  .marquee-item {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
-  }
-  .marquee-dot { color: var(--accent); font-size: 20px; line-height: 0; }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* HAMBURGER MENU */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    background: none;
-    border: none;
-    z-index: 200;
-  }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: center;
-  }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,10,10,0.97);
-    z-index: 150;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    backdrop-filter: blur(20px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .mobile-menu.open { opacity: 1; }
-  .mobile-menu a {
-    font-family: 'Syne', sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: var(--white);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-    transition: color 0.2s;
-  }
-  .mobile-menu a:hover { color: var(--accent); }
-
-  /* ── TABLET: 769px – 1024px ── */
-  @media (min-width: 769px) and (max-width: 1024px) {
-    nav { padding: 20px 40px; }
-    .nav-links { gap: 24px; }
-    .nav-links a { font-size: 12px; }
-
-    section { padding: 80px 40px; }
-    .hero { padding: 0 40px 80px; }
-    .hero-title { font-size: clamp(48px, 7vw, 80px); }
-    .hero-bg-number { font-size: 200px; right: -20px; }
-
-    .about-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-    .about-text { font-size: 16px; }
-    .highlight-num { font-size: 32px; }
-
-    .exp-item { grid-template-columns: 160px 1fr; gap: 24px; }
-    .exp-role { font-size: 22px; }
-
-    .results-section { padding: 80px 40px; }
-    .metrics-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-    .metric-card.featured { grid-column: span 2; }
-    .metric-value { font-size: clamp(40px, 5vw, 64px); }
-
-    .skills-section { padding: 80px 40px; }
-    .skills-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-
-    .clients-row { flex-wrap: wrap; }
-    .client-item { flex: 1 1 30%; }
-
-    .cta-section { padding: 80px 40px; }
-    .cta-row { flex-direction: column; align-items: flex-start; gap: 32px; }
-    .cta-bg-text { font-size: 120px; }
-
-    footer { padding: 32px 40px; }
-    .divider { margin: 0 40px; width: calc(100% - 80px); }
-
-    .roas-section { padding: 32px; }
-
-    .hero-bottom { gap: 32px; }
-    .hero-stats { gap: 32px; }
-  }
-
-  /* ── MOBILE: ≤ 768px ── */
-  @media (max-width: 768px) {
-    body { cursor: auto; }
-    .cursor, .cursor-follower { display: none; }
-
-    nav { padding: 18px 20px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-
-    section { padding: 64px 20px; }
-    .hero {
-      padding: 100px 20px 60px;
-      min-height: 100svh;
-      justify-content: flex-end;
-    }
-    .hero-bg-number { display: none; }
-    .hero-title { font-size: clamp(44px, 12vw, 64px); margin-bottom: 32px; }
-    .hero-tag { font-size: 11px; }
-    .hero-bottom { flex-direction: column; align-items: flex-start; gap: 28px; }
-    .hero-desc { font-size: 14px; max-width: 100%; }
-    .hero-stats { gap: 24px; width: 100%; }
-    .hero-stat-num { font-size: 28px; }
-    .scroll-line { display: none; }
-
-    .section-label { margin-bottom: 32px; font-size: 10px; }
-    .section-title { font-size: clamp(28px, 8vw, 44px); margin-bottom: 40px; }
-
-    .divider { margin: 0 20px; width: calc(100% - 40px); }
-
-    /* About */
-    .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .about-text { font-size: 15px; }
-    .highlight-card { padding: 20px 24px; }
-    .highlight-num { font-size: 32px; }
-    .highlight-label { font-size: 12px; }
-
-    /* Experience */
-    .exp-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
-    .exp-date { font-size: 11px; }
-    .exp-role { font-size: 20px; margin-bottom: 12px; }
-    .exp-desc { font-size: 13px; }
-    .exp-tags { gap: 6px; }
-    .exp-tag { font-size: 10px; padding: 3px 10px; }
-
-    /* Results */
-    .results-section { padding: 64px 20px; }
-    .metrics-grid { grid-template-columns: 1fr; gap: 2px; }
-    .metric-card { padding: 32px 24px; }
-    .metric-card.featured {
-      grid-column: span 1;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 20px;
-    }
-    .metric-card.featured > div:last-child { text-align: left; }
-    .metric-value { font-size: clamp(40px, 12vw, 64px); }
-    .metric-icon { font-size: 11px; }
-    .metric-sub { font-size: 12px; }
-
-    .roas-section { padding: 24px 20px; margin-top: 40px; border-radius: 16px; }
-    .roas-title { font-size: 16px; }
-    .roas-sub { font-size: 12px; margin-bottom: 24px; }
-    .roas-chart { height: 120px; gap: 8px; }
-    .roas-bar-val { font-size: 11px; }
-    .roas-bar-month { font-size: 10px; }
-
-    /* Skills */
-    .skills-section { padding: 64px 20px; }
-    .skills-section > div:first-child { margin-bottom: 40px; }
-    .skills-grid { grid-template-columns: 1fr; gap: 2px; }
-    .skill-group { padding: 32px 24px; }
-    .skill-group-title { font-size: 11px; margin-bottom: 24px; }
-    .skill-name { font-size: 13px; }
-
-    /* Clients */
-    .clients-row {
-      flex-direction: row;
-      flex-wrap: wrap;
-      border-radius: 12px;
-      margin-top: 40px;
-    }
-    .client-item {
-      flex: 1 1 calc(33.333% - 1px);
-      min-width: 0;
-      padding: 20px 12px;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .client-item:nth-child(3n) { border-right: none; }
-    .client-item:nth-last-child(-n+3):not(:has(~ .client-item:nth-last-child(-n+3))) { border-bottom: none; }
-    .client-name { font-size: 12px; }
-    .client-type { font-size: 10px; }
-
-    /* CTA */
-    .cta-section { padding: 64px 20px; }
-    .cta-bg-text { font-size: 72px; bottom: -10px; }
-    .cta-row { flex-direction: column; align-items: flex-start; gap: 32px; }
-    .contact-items { gap: 12px; }
-    .contact-item { gap: 12px; }
-    .contact-label { font-size: 10px; min-width: 64px; }
-    .contact-val { font-size: 13px; }
-    .hire-btn { font-size: 14px; padding: 16px 28px; width: 100%; justify-content: center; }
-
-    /* Footer */
-    footer { padding: 28px 20px; flex-direction: column; gap: 8px; text-align: center; }
-    .footer-copy, .footer-made { font-size: 12px; }
-
-    /* Marquee */
-    .marquee-item { font-size: 11px; gap: 12px; }
-  }
-
-  /* ── SMALL MOBILE: ≤ 380px ── */
-  @media (max-width: 380px) {
-    .hero-title { font-size: 38px; }
-    .section-title { font-size: 26px; }
-    .hero-stats { flex-direction: column; gap: 16px; }
-    .hero-stat-num { font-size: 24px; }
-    .client-item { flex: 1 1 50%; }
-    .client-item:nth-child(3n) { border-right: 1px solid var(--border); }
-    .client-item:nth-child(even) { border-right: none; }
-  }
+/* MOBILE */
+@media(max-width:768px){
+  body{cursor:auto;}
+  .cursor,.cursor-follower{display:none;}
+  nav{padding:16px 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  section,.results-wrap,.cta-wrap{padding:64px 20px;}
+  .divider{margin:0 20px;}
+  .hero{padding:100px 20px 60px;min-height:100svh;justify-content:flex-end;}
+  .hero-bg-num{display:none;}
+  .hero-title{font-size:clamp(42px,12vw,64px);margin-bottom:28px;}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:24px;}
+  .hero-desc{font-size:13px;max-width:100%;}
+  .hero-stats{gap:20px;}
+  .stat-num{font-size:28px;}
+  .scroll-ind{display:none;}
+  .sec-label{margin-bottom:32px;}
+  .sec-title{font-size:clamp(26px,8vw,42px);margin-bottom:36px;}
+  .about-grid{grid-template-columns:1fr;gap:32px;}
+  .about-text{font-size:14px;}
+  .h-num{font-size:30px;} .h-card{padding:20px 22px;}
+  .exp-item{grid-template-columns:1fr;gap:10px;padding:28px 0;}
+  .exp-role{font-size:20px;}
+  .metrics-grid{grid-template-columns:1fr;}
+  .m-card.feat{grid-column:span 1;flex-direction:column;align-items:flex-start;gap:16px;}
+  .m-growth{text-align:left;}
+  .m-val{font-size:clamp(38px,12vw,60px);}
+  .roas-box{padding:24px 18px;margin-top:36px;border-radius:14px;}
+  .roas-bars{height:110px;gap:8px;}
+  .roas-val{font-size:10px;}
+  .skills-grid{grid-template-columns:1fr;}
+  .skill-group{padding:30px 22px;}
+  .clients-row{flex-direction:row;flex-wrap:wrap;border-radius:12px;margin-top:36px;}
+  .client-item{flex:1 1 calc(33.333% - 1px);padding:18px 10px;border-bottom:1px solid var(--border);}
+  .client-name{font-size:11px;}
+  .cta-row{flex-direction:column;align-items:flex-start;gap:28px;}
+  .cta-bg{font-size:72px;}
+  .hire-btn{width:100%;justify-content:center;padding:16px 28px;font-size:14px;}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px 20px;}
+}
+@media(max-width:380px){
+  .hero-title{font-size:38px;}
+  .hero-stats{flex-direction:column;gap:14px;}
+  .client-item{flex:1 1 50%;}
+}
 </style>
 </head>
 <body>
-
 <div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursor-follower"></div>
+<div class="cursor-follower" id="follower"></div>
 
-<!-- NAV -->
-<nav>
+<nav id="nav">
   <a class="nav-logo" href="#">LS<span>.</span></a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#results">Results</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#experience">Experience</a>
+    <a href="#results">Results</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <button class="theme-toggle" id="tBtn" aria-label="Toggle theme">
+      <span class="toggle-track"><span class="toggle-knob"></span>
+        <span class="toggle-icon t-sun">☀️</span><span class="toggle-icon t-moon">🌙</span>
+      </span>
+    </button>
+    <button class="hamburger" id="burger"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#about" class="mobile-nav-link">About</a>
-  <a href="#experience" class="mobile-nav-link">Experience</a>
-  <a href="#results" class="mobile-nav-link">Results</a>
-  <a href="#skills" class="mobile-nav-link">Skills</a>
-  <a href="#contact" class="mobile-nav-link">Contact</a>
+<div class="mobile-menu" id="mMenu">
+  <a href="#about" class="ml">About</a><a href="#experience" class="ml">Experience</a>
+  <a href="#results" class="ml">Results</a><a href="#skills" class="ml">Skills</a>
+  <a href="#contact" class="ml">Contact</a>
+  <button class="theme-toggle" id="tBtn2" aria-label="Toggle theme" style="margin-top:8px;">
+    <span class="toggle-track"><span class="toggle-knob"></span>
+      <span class="toggle-icon t-sun">☀️</span><span class="toggle-icon t-moon">🌙</span>
+    </span>
+  </button>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg-number">2+</div>
+  <div class="hero-bg-num">2+</div>
   <div class="hero-tag">Available for new opportunities · Jakarta, Indonesia</div>
   <h1 class="hero-title">
     <span class="line"><span class="line-inner">Leonardo</span></span>
-    <span class="line"><span class="line-inner"><em style="font-style:italic; font-family:'Syne'; font-weight:400; color:var(--muted);">Steven</em></span></span>
-    <span class="line"><span class="line-inner accent-word">Digital Marketer</span></span>
+    <span class="line"><span class="line-inner" style="font-style:italic;font-weight:400;color:var(--fg-muted)">Steven</span></span>
+    <span class="line"><span class="line-inner" style="color:var(--accent)">Digital Marketer</span></span>
   </h1>
   <div class="hero-bottom">
     <p class="hero-desc">Digital Marketing Executive & Account Executive dengan rekam jejak nyata — ROAS 15.15x, 302K video plays, dan 6 klien aktif dikelola secara bersamaan.</p>
     <div class="hero-stats">
-      <div>
-        <div class="hero-stat-num" id="counter-roas">0<span>x</span></div>
-        <div class="hero-stat-label">Peak ROAS</div>
-      </div>
-      <div>
-        <div class="hero-stat-num" id="counter-plays">0<span>K</span></div>
-        <div class="hero-stat-label">Video Plays</div>
-      </div>
-      <div>
-        <div class="hero-stat-num" id="counter-clients">0</div>
-        <div class="hero-stat-label">Active Clients</div>
-      </div>
+      <div><div class="stat-num" id="cR">0<span>x</span></div><div class="stat-lbl">Peak ROAS</div></div>
+      <div><div class="stat-num" id="cP">0<span>K</span></div><div class="stat-lbl">Video Plays</div></div>
+      <div><div class="stat-num" id="cC">0</div><div class="stat-lbl">Active Clients</div></div>
     </div>
   </div>
-  <div class="scroll-line">
-    <div class="scroll-bar"></div>
-    <span>Scroll</span>
-  </div>
+  <div class="scroll-ind"><div class="scroll-bar"></div><span>Scroll</span></div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrapper">
+<div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="marquee-dot">●</span> Meta Ads</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Shopee Ads</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Account Executive</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Front-End Development</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Campaign Management</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> ROAS Optimization</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Client Relations</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Performance Analytics</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Meta Ads</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Shopee Ads</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Account Executive</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Front-End Development</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Campaign Management</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> ROAS Optimization</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Client Relations</span>
-    <span class="marquee-item"><span class="marquee-dot">●</span> Performance Analytics</span>
+    <span class="m-item"><span class="m-dot">●</span>Meta Ads</span>
+    <span class="m-item"><span class="m-dot">●</span>Shopee Ads</span>
+    <span class="m-item"><span class="m-dot">●</span>Account Executive</span>
+    <span class="m-item"><span class="m-dot">●</span>Front-End Development</span>
+    <span class="m-item"><span class="m-dot">●</span>Campaign Management</span>
+    <span class="m-item"><span class="m-dot">●</span>ROAS Optimization</span>
+    <span class="m-item"><span class="m-dot">●</span>Client Relations</span>
+    <span class="m-item"><span class="m-dot">●</span>Performance Analytics</span>
+    <span class="m-item"><span class="m-dot">●</span>Meta Ads</span>
+    <span class="m-item"><span class="m-dot">●</span>Shopee Ads</span>
+    <span class="m-item"><span class="m-dot">●</span>Account Executive</span>
+    <span class="m-item"><span class="m-dot">●</span>Front-End Development</span>
+    <span class="m-item"><span class="m-dot">●</span>Campaign Management</span>
+    <span class="m-item"><span class="m-dot">●</span>ROAS Optimization</span>
+    <span class="m-item"><span class="m-dot">●</span>Client Relations</span>
+    <span class="m-item"><span class="m-dot">●</span>Performance Analytics</span>
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
-  <div class="section-label reveal">About</div>
+  <div class="sec-label reveal">About</div>
   <div class="about-grid">
     <div>
-      <h2 class="section-title reveal">Data-driven marketer dengan DNA seorang developer.</h2>
-      <p class="about-text reveal reveal-delay-1">Saya adalah <strong>Leonardo Steven</strong> — lulusan Informatika dengan GPA <strong>3.53/4.00</strong> yang memilih dunia digital marketing karena satu alasan: <strong>angka tidak berbohong</strong>.</p>
-      <br>
-      <p class="about-text reveal reveal-delay-2">Selama 2+ tahun di P.W.D Lab, saya mengelola <strong>6 klien aktif</strong> secara bersamaan — dari F&B, fashion, hingga retail — sambil menulis kode untuk website mereka. Kombinasi yang jarang ada di pasar.</p>
+      <h2 class="sec-title reveal">Data-driven marketer dengan DNA seorang developer.</h2>
+      <p class="about-text reveal d1">Saya adalah <strong>Leonardo Steven</strong> — lulusan Informatika dengan GPA <strong>3.53/4.00</strong> yang memilih dunia digital marketing karena satu alasan: <strong>angka tidak berbohong</strong>.</p><br>
+      <p class="about-text reveal d2">Selama 2+ tahun di P.W.D Lab, saya mengelola <strong>6 klien aktif</strong> secara bersamaan — dari F&B, fashion, hingga retail — sambil menulis kode untuk website mereka. Kombinasi yang jarang ada di pasar.</p>
     </div>
-    <div class="about-highlights">
-      <div class="highlight-card reveal reveal-delay-1">
-        <div class="highlight-num">15.15x</div>
-        <div class="highlight-label">Overall ROAS terbaik — Shopee + CPAS integrated (Jan–Feb 2026)</div>
-      </div>
-      <div class="highlight-card reveal reveal-delay-2">
-        <div class="highlight-num">302K</div>
-        <div class="highlight-label">Video plays dari 1 campaign Instagram Ads — UKI Matcha</div>
-      </div>
-      <div class="highlight-card reveal reveal-delay-3">
-        <div class="highlight-num">IDR 22.5M</div>
-        <div class="highlight-label">Monthly sales Majolique di Shopee — Maret 2026</div>
-      </div>
+    <div class="about-hl">
+      <div class="h-card reveal d1"><div class="h-num">15.15x</div><div class="h-lbl">Overall ROAS terbaik — Shopee + CPAS integrated (Jan–Feb 2026)</div></div>
+      <div class="h-card reveal d2"><div class="h-num">302K</div><div class="h-lbl">Video plays dari 1 campaign Instagram Ads — UKI Matcha</div></div>
+      <div class="h-card reveal d3"><div class="h-num">IDR 22.5M</div><div class="h-lbl">Monthly sales Majolique di Shopee — Maret 2026</div></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- EXPERIENCE -->
 <section id="experience">
-  <div class="section-label reveal">Experience</div>
-  <h2 class="section-title reveal">Perjalanan karier<br>yang terukur.</h2>
-
-  <div class="experience-list">
+  <div class="sec-label reveal">Experience</div>
+  <h2 class="sec-title reveal">Perjalanan karier<br>yang terukur.</h2>
+  <div class="exp-list">
     <div class="exp-item reveal">
       <div class="exp-date">May 2024 — Present</div>
-      <div>
-        <div class="exp-company">P.W.D Lab</div>
-        <div class="exp-role">Account Executive &<br>Digital Marketing Executive</div>
-        <p class="exp-desc">Mengelola 6 klien aktif secara simultan — briefing tim kreatif, optimasi iklan Meta & Shopee, menyusun laporan performa bulanan, dan menangani administrasi keuangan klien. Total ad budget yang dikelola mencapai puluhan juta IDR per bulan.</p>
-        <div class="exp-tags">
-          <span class="exp-tag">Meta Ads</span>
-          <span class="exp-tag">Shopee Ads</span>
-          <span class="exp-tag">Client Management</span>
-          <span class="exp-tag">CPAS</span>
-          <span class="exp-tag">Reporting</span>
-        </div>
-      </div>
+      <div><div class="exp-co">P.W.D Lab</div><div class="exp-role">Account Executive &<br>Digital Marketing Executive</div>
+      <p class="exp-desc">Mengelola 6 klien aktif secara simultan — briefing tim kreatif, optimasi iklan Meta & Shopee, menyusun laporan performa bulanan, dan menangani administrasi keuangan klien. Total ad budget yang dikelola mencapai puluhan juta IDR per bulan.</p>
+      <div class="exp-tags"><span class="exp-tag">Meta Ads</span><span class="exp-tag">Shopee Ads</span><span class="exp-tag">Client Management</span><span class="exp-tag">CPAS</span><span class="exp-tag">Reporting</span></div></div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-date">May 2024 — Oct 2025</div>
-      <div>
-        <div class="exp-company">P.W.D Lab</div>
-        <div class="exp-role">Front-End Developer</div>
-        <p class="exp-desc">Membangun dan maintain website ThePublicBook.id, Majolique, dan Jangjo Indonesia (jangjo.com) menggunakan HTML & CSS. Memastikan tampilan responsif dan konsistensi visual identity sesuai brand guideline.</p>
-        <div class="exp-tags">
-          <span class="exp-tag">HTML</span>
-          <span class="exp-tag">CSS</span>
-          <span class="exp-tag">Responsive Design</span>
-          <span class="exp-tag">Figma</span>
-        </div>
-      </div>
+      <div><div class="exp-co">P.W.D Lab</div><div class="exp-role">Front-End Developer</div>
+      <p class="exp-desc">Membangun dan maintain website ThePublicBook.id, Majolique, dan Jangjo Indonesia (jangjo.com) menggunakan HTML & CSS. Memastikan tampilan responsif dan konsistensi visual identity sesuai brand guideline.</p>
+      <div class="exp-tags"><span class="exp-tag">HTML</span><span class="exp-tag">CSS</span><span class="exp-tag">Responsive Design</span><span class="exp-tag">Figma</span></div></div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-date">Aug 2022 — Jan 2025</div>
-      <div>
-        <div class="exp-company">Urbanview Hotel Syariah Ratu Kuring</div>
-        <div class="exp-role">Coordinator</div>
-        <p class="exp-desc">Mengawasi operasional hotel harian, menyelesaikan keluhan tamu, memverifikasi kesiapan kamar, dan mereview transaksi keuangan bulanan untuk akurasi laporan keuangan.</p>
-        <div class="exp-tags">
-          <span class="exp-tag">Operations</span>
-          <span class="exp-tag">Finance</span>
-          <span class="exp-tag">Leadership</span>
-        </div>
-      </div>
+      <div><div class="exp-co">Urbanview Hotel Syariah Ratu Kuring</div><div class="exp-role">Coordinator</div>
+      <p class="exp-desc">Mengawasi operasional hotel harian, menyelesaikan keluhan tamu, memverifikasi kesiapan kamar, dan mereview transaksi keuangan bulanan untuk akurasi laporan keuangan.</p>
+      <div class="exp-tags"><span class="exp-tag">Operations</span><span class="exp-tag">Finance</span><span class="exp-tag">Leadership</span></div></div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-date">Nov 2021 — May 2022</div>
-      <div>
-        <div class="exp-company">Garuda Indonesia Training Centre</div>
-        <div class="exp-role">Learning & Development</div>
-        <p class="exp-desc">Mengembangkan aplikasi Flight Simulator Time Log, mengelola event ILDP (InJourney Leadership Development Program), dan berpartisipasi dalam podcast bersama CEO Garuda Indonesia.</p>
-        <div class="exp-tags">
-          <span class="exp-tag">App Development</span>
-          <span class="exp-tag">Event Management</span>
-          <span class="exp-tag">Public Speaking</span>
-        </div>
-      </div>
+      <div><div class="exp-co">Garuda Indonesia Training Centre</div><div class="exp-role">Learning & Development</div>
+      <p class="exp-desc">Mengembangkan aplikasi Flight Simulator Time Log, mengelola event ILDP (InJourney Leadership Development Program), dan berpartisipasi dalam podcast bersama CEO Garuda Indonesia.</p>
+      <div class="exp-tags"><span class="exp-tag">App Development</span><span class="exp-tag">Event Management</span><span class="exp-tag">Public Speaking</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- RESULTS -->
-<div class="results-section" id="results" style="scroll-margin-top: 80px;">
-  <div class="section-label reveal">Campaign Results</div>
-  <h2 class="section-title reveal">Angka yang<br>bicara sendiri.</h2>
-
+<div class="results-wrap" id="results" style="scroll-margin-top:80px;">
+  <div class="sec-label reveal">Campaign Results</div>
+  <h2 class="sec-title reveal">Angka yang<br>bicara sendiri.</h2>
   <div class="metrics-grid">
-    <div class="metric-card featured reveal">
-      <div>
-        <div class="metric-icon">Integrated Shopee + CPAS · Jan–Feb 2026</div>
-        <div class="metric-value">15.15x</div>
-        <div class="metric-sub" style="color:var(--muted);">Overall ROAS — naik dari 3.92x.<br>Majolique Fashion Brand.</div>
-      </div>
-      <div style="text-align:right;">
-        <div class="metric-icon" style="color:var(--muted);">Growth</div>
-        <div style="font-family:'Syne'; font-size:56px; font-weight:800; color:var(--white); line-height:1;">+287%</div>
-        <div style="font-size:12px; color:var(--muted);">Peningkatan ROAS</div>
-      </div>
+    <div class="m-card feat reveal">
+      <div><div class="m-icon">Integrated Shopee + CPAS · Jan–Feb 2026</div><div class="m-val">15.15x</div><div class="m-sub">Overall ROAS — naik dari 3.92x.<br>Majolique Fashion Brand.</div></div>
+      <div class="m-growth"><div class="m-growth-num">+287%</div><div class="m-growth-lbl">Peningkatan ROAS</div></div>
     </div>
-    <div class="metric-card reveal">
-      <div class="metric-icon">Meta Ads · UKI Matcha</div>
-      <div class="metric-value">302K</div>
-      <div class="metric-sub">Video plays dalam 1 campaign.<br>Budget: Rp 2.000.000</div>
-    </div>
-    <div class="metric-card reveal reveal-delay-1">
-      <div class="metric-icon">Meta Ads · ThePublicBook</div>
-      <div class="metric-value">243K</div>
-      <div class="metric-sub">Unique accounts reached.<br>CPR hanya Rp 1.887</div>
-    </div>
-    <div class="metric-card reveal reveal-delay-2">
-      <div class="metric-icon">Shopee Ads · Dec 2025</div>
-      <div class="metric-value">7.36x</div>
-      <div class="metric-sub">ROAS Shopee Majolique.<br>Penjualan Rp 19.5M</div>
-    </div>
-    <div class="metric-card reveal reveal-delay-3" style="background:#f0ece2;">
-      <div class="metric-icon">Visero Indonesia · Q4 2025</div>
-      <div class="metric-value">IDR 11</div>
-      <div class="metric-sub">CPC Engagement terendah.<br>ER 3.33–4.44%</div>
-    </div>
+    <div class="m-card reveal d1"><div class="m-icon">Meta Ads · UKI Matcha</div><div class="m-val">302K</div><div class="m-sub">Video plays dalam 1 campaign.<br>Budget: Rp 2.000.000</div></div>
+    <div class="m-card reveal d1"><div class="m-icon">Meta Ads · ThePublicBook</div><div class="m-val">243K</div><div class="m-sub">Unique accounts reached.<br>CPR hanya Rp 1.887</div></div>
+    <div class="m-card reveal d2"><div class="m-icon">Shopee Ads · Dec 2025</div><div class="m-val">7.36x</div><div class="m-sub">ROAS Shopee Majolique.<br>Penjualan Rp 19.5M</div></div>
+    <div class="m-card reveal d2"><div class="m-icon">Visero Indonesia · Q4 2025</div><div class="m-val">IDR 11</div><div class="m-sub">CPC Engagement terendah.<br>ER 3.33–4.44%</div></div>
   </div>
-
-  <!-- ROAS Chart -->
-  <div class="roas-section reveal" style="background:#f5f2ec; margin-top:60px;">
-    <div class="roas-title" style="color:var(--black);">Shopee Ads ROAS Growth — Majolique</div>
-    <div class="roas-sub" style="color:#888;">Pertumbuhan konsisten dengan strategi GMV Max (Aug 2025 – Mar 2026)</div>
-    <div class="roas-chart" id="roas-chart">
-      <div class="roas-bar-wrap">
-        <div class="roas-bar-val" style="color:#333;">3.90</div>
-        <div class="roas-bar" style="background:#d4d0c8; --target-h: 42%;"></div>
-        <div class="roas-bar-month" style="color:#888;">Aug</div>
-      </div>
-      <div class="roas-bar-wrap">
-        <div class="roas-bar-val" style="color:#333;">5.61</div>
-        <div class="roas-bar" style="background:#c4c0b6; --target-h: 57%;"></div>
-        <div class="roas-bar-month" style="color:#888;">Sep</div>
-      </div>
-      <div class="roas-bar-wrap">
-        <div class="roas-bar-val" style="color:#333;">7.23</div>
-        <div class="roas-bar" style="background:#b4b0a6; --target-h: 70%;"></div>
-        <div class="roas-bar-month" style="color:#888;">Oct</div>
-      </div>
-      <div class="roas-bar-wrap">
-        <div class="roas-bar-val" style="color:#333;">5.82</div>
-        <div class="roas-bar" style="background:#c4c0b6; --target-h: 59%;"></div>
-        <div class="roas-bar-month" style="color:#888;">Nov</div>
-      </div>
-      <div class="roas-bar-wrap">
-        <div class="roas-bar-val" style="color:#333;">7.36</div>
-        <div class="roas-bar" style="background:#a4a096; --target-h: 73%;"></div>
-        <div class="roas-bar-month" style="color:#888;">Dec</div>
-      </div>
-      <div class="roas-bar-wrap">
-        <div class="roas-bar-val" style="color:#333;">10.58</div>
-        <div class="roas-bar" style="background:var(--accent2); --target-h: 88%;"></div>
-        <div class="roas-bar-month" style="color:#888;">Feb</div>
-      </div>
-      <div class="roas-bar-wrap">
-        <div class="roas-bar-val" style="color:#333;">15.15</div>
-        <div class="roas-bar" style="background:#0a0a0a; --target-h: 100%;"></div>
-        <div class="roas-bar-month" style="color:#888;">Best</div>
-      </div>
+  <div class="roas-box reveal">
+    <div class="roas-title">Shopee Ads ROAS Growth — Majolique</div>
+    <div class="roas-sub">Pertumbuhan konsisten dengan strategi GMV Max (Aug 2025 – Mar 2026)</div>
+    <div class="roas-bars" id="roasChart">
+      <div class="roas-col"><div class="roas-val">3.90</div><div class="roas-bar" style="background:var(--bar-a);--h:36%"></div><div class="roas-month">Aug</div></div>
+      <div class="roas-col"><div class="roas-val">5.61</div><div class="roas-bar" style="background:var(--bar-b);--h:52%"></div><div class="roas-month">Sep</div></div>
+      <div class="roas-col"><div class="roas-val">7.23</div><div class="roas-bar" style="background:var(--bar-c);--h:65%"></div><div class="roas-month">Oct</div></div>
+      <div class="roas-col"><div class="roas-val">5.82</div><div class="roas-bar" style="background:var(--bar-b);--h:53%"></div><div class="roas-month">Nov</div></div>
+      <div class="roas-col"><div class="roas-val">7.36</div><div class="roas-bar" style="background:var(--bar-c);--h:67%"></div><div class="roas-month">Dec</div></div>
+      <div class="roas-col"><div class="roas-val">10.58</div><div class="roas-bar" style="background:var(--accent2);--h:84%"></div><div class="roas-month">Feb</div></div>
+      <div class="roas-col"><div class="roas-val">15.15</div><div class="roas-bar" style="background:var(--bar-top);--h:100%"></div><div class="roas-month">Best</div></div>
     </div>
   </div>
 </div>
 
-<!-- SKILLS -->
-<section id="skills" class="skills-section">
-  <div style="padding: 0; margin-bottom: 60px;">
-    <div class="section-label reveal">Skills & Tools</div>
-    <h2 class="section-title reveal">Senjata yang<br>saya bawa.</h2>
-  </div>
+<section id="skills">
+  <div class="sec-label reveal">Skills & Tools</div>
+  <h2 class="sec-title reveal">Senjata yang<br>saya bawa.</h2>
   <div class="skills-grid">
     <div class="skill-group reveal">
-      <div class="skill-group-title">Paid Advertising</div>
+      <div class="skill-gtitle">Paid Advertising</div>
       <div class="skill-items">
-        <div class="skill-item">
-          <div class="skill-name"><span>Meta Ads (Traffic, Awareness, CPAS)</span><span class="skill-pct">95%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 95%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Shopee Ads (GMV Max)</span><span class="skill-pct">90%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 90%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Audience Targeting & Segmentation</span><span class="skill-pct">92%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 92%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Campaign Analytics & Reporting</span><span class="skill-pct">88%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 88%;"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Meta Ads (Traffic, Awareness, CPAS)</span><span class="skill-pct">95%</span></div><div class="skill-track"><div class="skill-fill" style="--w:95%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Shopee Ads (GMV Max)</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Audience Targeting & Segmentation</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" style="--w:92%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Campaign Analytics & Reporting</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
       </div>
     </div>
-    <div class="skill-group reveal reveal-delay-1">
-      <div class="skill-group-title">Client Management</div>
+    <div class="skill-group reveal d1">
+      <div class="skill-gtitle">Client Management</div>
       <div class="skill-items">
-        <div class="skill-item">
-          <div class="skill-name"><span>Account Executive (multi-client)</span><span class="skill-pct">93%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 93%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Campaign Planning & Briefing</span><span class="skill-pct">90%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 90%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Client Presentation & Reporting</span><span class="skill-pct">88%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 88%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Finance & Invoice Management</span><span class="skill-pct">82%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 82%;"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Account Executive (multi-client)</span><span class="skill-pct">93%</span></div><div class="skill-track"><div class="skill-fill" style="--w:93%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Campaign Planning & Briefing</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Client Presentation & Reporting</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Finance & Invoice Management</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill" style="--w:82%"></div></div></div>
       </div>
     </div>
-    <div class="skill-group reveal reveal-delay-2">
-      <div class="skill-group-title">Development & Design</div>
+    <div class="skill-group reveal d2">
+      <div class="skill-gtitle">Development & Design</div>
       <div class="skill-items">
-        <div class="skill-item">
-          <div class="skill-name"><span>HTML & CSS</span><span class="skill-pct">85%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 85%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Figma & Canva</span><span class="skill-pct">80%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 80%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Adobe Photoshop</span><span class="skill-pct">75%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 75%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Meta Business Suite</span><span class="skill-pct">95%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 95%;"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">HTML & CSS</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Figma & Canva</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="--w:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Adobe Photoshop</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" style="--w:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Meta Business Suite</span><span class="skill-pct">95%</span></div><div class="skill-track"><div class="skill-fill" style="--w:95%"></div></div></div>
       </div>
     </div>
-    <div class="skill-group reveal reveal-delay-3">
-      <div class="skill-group-title">Soft Skills</div>
+    <div class="skill-group reveal d3">
+      <div class="skill-gtitle">Soft Skills</div>
       <div class="skill-items">
-        <div class="skill-item">
-          <div class="skill-name"><span>Leadership & Negotiation</span><span class="skill-pct">90%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 90%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Problem Solving & Critical Thinking</span><span class="skill-pct">92%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 92%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>Public Speaking</span><span class="skill-pct">85%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 85%;"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name"><span>English & Bahasa Indonesia</span><span class="skill-pct">88%</span></div>
-          <div class="skill-track"><div class="skill-fill" style="--target-w: 88%;"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Leadership & Negotiation</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="--w:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Problem Solving & Critical Thinking</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" style="--w:92%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Public Speaking</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="--w:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">English & Bahasa Indonesia</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" style="--w:88%"></div></div></div>
       </div>
     </div>
   </div>
-
-  <!-- Clients -->
-  <div style="margin-top: 80px;">
-    <div class="section-label reveal">Clients Handled</div>
-    <div class="clients-row reveal">
-      <div class="client-item">
-        <div class="client-name">Visero</div>
-        <div class="client-type">Fashion</div>
-      </div>
-      <div class="client-item">
-        <div class="client-name">Korté Chocolate</div>
-        <div class="client-type">F&B</div>
-      </div>
-      <div class="client-item">
-        <div class="client-name">Latré Patisserie</div>
-        <div class="client-type">F&B</div>
-      </div>
-      <div class="client-item">
-        <div class="client-name">Perempuan Gagal</div>
-        <div class="client-type">Content</div>
-      </div>
-      <div class="client-item">
-        <div class="client-name">Natural Indococonut</div>
-        <div class="client-type">Retail</div>
-      </div>
-      <div class="client-item">
-        <div class="client-name">FAMMA Nusantara</div>
-        <div class="client-type">Retail</div>
-      </div>
-    </div>
+  <div class="sec-label reveal" style="margin-top:72px;margin-bottom:0">Clients Handled</div>
+  <div class="clients-row reveal">
+    <div class="client-item"><div class="client-name">Visero</div><div class="client-type">Fashion</div></div>
+    <div class="client-item"><div class="client-name">Korté Chocolate</div><div class="client-type">F&B</div></div>
+    <div class="client-item"><div class="client-name">Latré Patisserie</div><div class="client-type">F&B</div></div>
+    <div class="client-item"><div class="client-name">Perempuan Gagal</div><div class="client-type">Content</div></div>
+    <div class="client-item"><div class="client-name">Natural Indococonut</div><div class="client-type">Retail</div></div>
+    <div class="client-item"><div class="client-name">FAMMA Nusantara</div><div class="client-type">Retail</div></div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-section" id="contact" style="scroll-margin-top: 80px;">
-  <div class="cta-bg-text">HIRE ME</div>
-  <div class="section-label">Let's Work Together</div>
-  <h2 class="section-title reveal">Siap membawa<br>ROI ke level<br>berikutnya?</h2>
+<div class="cta-wrap" id="contact" style="scroll-margin-top:80px;">
+  <div class="cta-bg">HIRE ME</div>
+  <div class="sec-label reveal">Let's Work Together</div>
+  <h2 class="sec-title reveal">Siap membawa<br>ROI ke level<br>berikutnya?</h2>
   <div class="cta-row reveal">
-    <div class="contact-items">
-      <div class="contact-item">
-        <span class="contact-label">Phone</span>
-        <a class="contact-val" href="tel:085111228339">085111228339</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-label">Email</span>
-        <a class="contact-val" href="mailto:leonardosteven050@gmail.com">leonardosteven050@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-label">LinkedIn</span>
-        <a class="contact-val" href="#">steveleonardo</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-label">Instagram</span>
-        <a class="contact-val" href="#">@Elbaee</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-label">Location</span>
-        <span class="contact-val">Kelapa Gading, Jakarta Utara</span>
-      </div>
+    <div class="contact-list">
+      <div class="contact-row"><span class="c-lbl">Phone</span><a class="c-val" href="tel:085111228339">085111228339</a></div>
+      <div class="contact-row"><span class="c-lbl">Email</span><a class="c-val" href="mailto:leonardosteven050@gmail.com">leonardosteven050@gmail.com</a></div>
+      <div class="contact-row"><span class="c-lbl">LinkedIn</span><a class="c-val" href="#">steveleonardo</a></div>
+      <div class="contact-row"><span class="c-lbl">Instagram</span><a class="c-val" href="#">@Elbaee</a></div>
+      <div class="contact-row"><span class="c-lbl">Location</span><span class="c-val">Kelapa Gading, Jakarta Utara</span></div>
     </div>
-    <a class="hire-btn" href="mailto:leonardosteven050@gmail.com">
-      Let's Talk <span class="arrow">→</span>
-    </a>
+    <a class="hire-btn" href="mailto:leonardosteven050@gmail.com">Let's Talk <span class="arr">→</span></a>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <span class="footer-copy">© 2026 Leonardo Steven</span>
-  <span class="footer-made">GPA 3.53 · Informatics · Multimedia Nusantara University</span>
+  <span>© 2026 Leonardo Steven</span>
+  <span>GPA 3.53 · Informatics · Multimedia Nusantara University</span>
 </footer>
 
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const follower = document.getElementById('cursor-follower');
-  let mx = 0, my = 0, fx = 0, fy = 0;
+// CURSOR
+const cur=document.getElementById('cursor'),fol=document.getElementById('follower');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';});
+(function loop(){fx+=(mx-fx-18)*.12;fy+=(my-fy-18)*.12;fol.style.left=fx+'px';fol.style.top=fy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.style.transform='scale(2.5)');el.addEventListener('mouseleave',()=>cur.style.transform='scale(1)');});
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx - 6 + 'px';
-    cursor.style.top = my - 6 + 'px';
+// THEME — default DARK
+const root=document.documentElement;
+if(localStorage.getItem('theme')==='light') root.classList.add('light');
+function doToggle(){
+  root.classList.toggle('light');
+  localStorage.setItem('theme',root.classList.contains('light')?'light':'dark');
+  cur.style.background=root.classList.contains('light')?'#0f0f0f':'#c8ff00';
+}
+document.getElementById('tBtn').addEventListener('click',doToggle);
+document.getElementById('tBtn2').addEventListener('click',doToggle);
+
+// NAV SCROLL
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',window.scrollY>60));
+
+// HAMBURGER
+const burger=document.getElementById('burger'),menu=document.getElementById('mMenu');
+burger.addEventListener('click',()=>{
+  const o=menu.classList.contains('open');
+  if(o){menu.classList.remove('open');burger.classList.remove('open');setTimeout(()=>menu.style.display='none',300);}
+  else{menu.style.display='flex';requestAnimationFrame(()=>menu.classList.add('open'));burger.classList.add('open');}
+});
+document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>{
+  menu.classList.remove('open');burger.classList.remove('open');setTimeout(()=>menu.style.display='none',300);
+}));
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;e.preventDefault();
+    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
   });
+});
 
-  function animFollower() {
-    fx += (mx - fx - 20) * 0.12;
-    fy += (my - fy - 20) * 0.12;
-    follower.style.left = fx + 'px';
-    follower.style.top = fy + 'px';
-    requestAnimationFrame(animFollower);
-  }
-  animFollower();
+// REVEAL
+const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
-    el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
-  });
+// SKILLS
+const skObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.skill-fill').forEach((b,i)=>setTimeout(()=>b.classList.add('anim'),i*100));}),{threshold:.3});
+document.querySelectorAll('.skill-group').forEach(g=>skObs.observe(g));
 
-  // Intersection Observer for reveal animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
+// ROAS
+const roObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.roas-bar').forEach((b,i)=>setTimeout(()=>b.classList.add('anim'),i*100));}),{threshold:.3});
+const rc=document.getElementById('roasChart');if(rc)roObs.observe(rc);
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Skill bar animation
-  const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.skill-fill').forEach((bar, i) => {
-          setTimeout(() => bar.classList.add('animated'), i * 120);
-        });
-      }
-    });
-  }, { threshold: 0.3 });
-
-  document.querySelectorAll('.skill-group').forEach(el => skillObserver.observe(el));
-
-  // ROAS chart animation
-  const roasObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.roas-bar').forEach((bar, i) => {
-          setTimeout(() => bar.classList.add('animated'), i * 120);
-        });
-      }
-    });
-  }, { threshold: 0.3 });
-
-  const roasChart = document.getElementById('roas-chart');
-  if (roasChart) roasObserver.observe(roasChart);
-
-  // Counter animation
-  function animateCounter(el, target, duration, suffix) {
-    let start = 0;
-    const step = target / (duration / 16);
-    const update = () => {
-      start = Math.min(start + step, target);
-      el.innerHTML = (Number.isInteger(target) ? Math.floor(start) : start.toFixed(2)) + '<span>' + suffix + '</span>';
-      if (start < target) requestAnimationFrame(update);
-    };
-    update();
-  }
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(document.getElementById('counter-roas'), 15.15, 2000, 'x');
-        animateCounter(document.getElementById('counter-plays'), 302, 1800, 'K');
-        animateCounter(document.getElementById('counter-clients'), 6, 1000, '');
-        counterObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counterObserver.observe(document.getElementById('counter-roas'));
-
-  // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.contains('open');
-    if (isOpen) {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      setTimeout(() => mobileMenu.style.display = 'none', 300);
-    } else {
-      mobileMenu.style.display = 'flex';
-      requestAnimationFrame(() => mobileMenu.classList.add('open'));
-      hamburger.classList.add('open');
-    }
-  });
-
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      setTimeout(() => mobileMenu.style.display = 'none', 300);
-    });
-  });
-
-  // Smooth scroll with nav offset for all anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      const offset = 80;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-
-  // Nav scroll effect
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 80) {
-      nav.style.background = 'rgba(10,10,10,0.95)';
-      nav.style.backdropFilter = 'blur(20px)';
-      nav.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
-    } else {
-      nav.style.background = '';
-      nav.style.backdropFilter = '';
-      nav.style.borderBottom = '';
-    }
-  });
+// COUNTERS
+function cnt(el,target,dur,sfx,dec=0){let s=0,st=target/(dur/16);(function go(){s=Math.min(s+st,target);el.innerHTML=(dec?s.toFixed(dec):Math.floor(s))+'<span>'+sfx+'</span>';if(s<target)requestAnimationFrame(go);})();}
+const cObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){cnt(document.getElementById('cR'),15.15,1800,'x',2);cnt(document.getElementById('cP'),302,1600,'K');cnt(document.getElementById('cC'),6,900,'');cObs.disconnect();}}),{threshold:.5});
+cObs.observe(document.getElementById('cR'));
 </script>
 </body>
 </html>
